@@ -6,11 +6,11 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     public enum ShootPattern { Single, Double, Tracking}
-    ShootPattern pattern;
+    public ShootPattern pattern;
     Transform firePoint;
     float cooldown;
     float fireRate;
-    BulletTypes[] bullets;
+    public BulletTypes[] bullets;
     private void Start()
     {
         firePoint = GetComponentInChildren<Transform>().Find("Fire Point");
@@ -45,5 +45,7 @@ public struct BulletTypes
 {
     public string name;
     public float scale;
+    public float speed;
+    public float damage;
     public GameObject bullet;
 }

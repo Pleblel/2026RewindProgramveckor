@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBulletSuperClass : MonoBehaviour
 {
     protected static float bulletSpeed;
-    protected Vector2 moveDir = Vector2.down;
+    protected static Vector2 moveDir = Vector2.down;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

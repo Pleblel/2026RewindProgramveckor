@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class ChaseMovement : EnemyEntity
 {
-    [SerializeField] GameObject playerTarget; 
-
-
+    [SerializeField] GameObject playerTarget;
+    [SerializeField] bool reachedPosition;
+    [SerializeField] GameObject runawayTarget;
+    [SerializeField] float stayTimer = 2f; 
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +25,16 @@ public class ChaseMovement : EnemyEntity
     // Update is called once per frame
     void Update()
     {
-        FindPlayer();
         Movement(movementSpeed);
+
+        if (reachedPosition)
+        {
+            stayTimer -= Time.deltaTime;
+
+            if (stayTimer <= 0f)
+                RunAway(movementSpeed);
+        }
+           
     }
 
     protected override void Movement(float speed)
@@ -39,11 +49,30 @@ public class ChaseMovement : EnemyEntity
 
         if (Vector2.Distance(pos, target) <= stopDistance)
         {
+            reachedPosition = true; 
             return;
         }
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
+
+    void RunAway(float speed)
+    {
+
+        Vector2 pos = transform.position;
+
+        target = runawayTarget.transform.position;
+
+        if (runawayTarget == null)
+            return; 
+          
+       void OnBecameInvisible()
+       {
+            Destroy(gameObject);
+       }
+
+       transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+    }
     void FindPlayer()
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player"); 

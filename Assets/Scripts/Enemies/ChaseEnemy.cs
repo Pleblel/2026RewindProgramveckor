@@ -8,6 +8,7 @@ public class ChaseMovement : EnemyEntity
 {
     [SerializeField] GameObject playerTarget;
     [SerializeField] bool reachedPosition;
+    bool hasBeenVisible;
     [SerializeField] GameObject runawayTarget;
     [SerializeField] float stayTimer = 2f; 
 
@@ -65,16 +66,22 @@ public class ChaseMovement : EnemyEntity
 
         if (runawayTarget == null)
             return; 
-          
-       void OnBecameInvisible()
-       {
-            Destroy(gameObject);
-       }
 
        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
     void FindPlayer()
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player"); 
+    }
+
+    private void OnBecameVisible()
+    {
+        hasBeenVisible = true; 
+    }
+
+    private void OnBecameInvisible()
+    {
+        if (hasBeenVisible)
+            Destroy(gameObject);
     }
 }

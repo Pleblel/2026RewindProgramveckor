@@ -68,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (cam != null)
         {
-            // For orthographic camera z doesn't matter; for perspective we use distance to the player plane.
             float zDist = Mathf.Abs(transform.position.z - cam.transform.position.z);
 
             float minX = cam.ViewportToWorldPoint(new Vector3(leftMarginV, 0f, zDist)).x;

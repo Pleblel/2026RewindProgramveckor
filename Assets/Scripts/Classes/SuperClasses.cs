@@ -20,7 +20,7 @@ public class EnemyBulletSuperClass : MonoBehaviour
 public class PlayerBulletSuperClass : MonoBehaviour
 {
     protected static float bulletSpeed;
-    protected Vector2 moveDir = Vector2.up;
+    protected static Vector2 moveDir = Vector2.up;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -683,9 +683,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1078445406}
   - component: {fileID: 1078445405}
+  - component: {fileID: 1078445407}
   - component: {fileID: 1078445404}
   - component: {fileID: 1078445403}
-  - component: {fileID: 1078445407}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -816,6 +816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcab3d0b57e7024bb44036154e4ec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pattern: 0
+  bullets: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

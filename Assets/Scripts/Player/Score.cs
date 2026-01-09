@@ -5,6 +5,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     protected int score;
+    public float scoreMultiplier = 1.0f;
     void StartGame()
     {
         score = 1000;

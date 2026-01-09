@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speeds")]
     public float normalSpeed = 6f;
-    public float focusSpeed = 3f;
+    private float currentSpeed;
+    enum Speeds
+    {
+        Default,
+        Unfocused,
+        Focused
+    }
+    private Speeds speeds;
 
-    [Header("Playfield margins (viewport 0..1)")]
-    [Tooltip("0.15 = 15% of the screen blocked on the left")]
+    [Header("Playfield margins")]
     [Range(0f, 0.49f)] public float leftMarginV = 0.20f;
     [Range(0f, 0.49f)] public float rightMarginV = 0.20f;
     [Range(0f, 0.49f)] public float bottomMarginV = 0.01f;
@@ -17,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 input;
-    private bool focusing;
     private Camera cam;
 
     void Awake()
@@ -31,13 +38,33 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        focusing = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        bool unfocused = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        bool focused = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+
+        if (focused) speeds = Speeds.Focused;
+        else if (unfocused) speeds = Speeds.Unfocused;
+        else speeds = Speeds.Default;
+
+
+        switch (speeds)
+        {
+            case Speeds.Default:
+                currentSpeed = normalSpeed;
+                break;
+            case Speeds.Unfocused:
+                currentSpeed = normalSpeed * 1.5f;
+                break;
+
+            case Speeds.Focused:
+                currentSpeed = normalSpeed / 2;
+                break;
+        }
+
     }
 
     void FixedUpdate()
     {
-        float speed = focusing ? focusSpeed : normalSpeed;
-        Vector2 nextPos = rb.position + input * speed * Time.fixedDeltaTime;
+        Vector2 nextPos = rb.position + input * currentSpeed * Time.fixedDeltaTime;
 
         if (cam != null)
         {

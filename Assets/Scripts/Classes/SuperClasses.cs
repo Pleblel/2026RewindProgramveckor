@@ -23,11 +23,18 @@ public class EnemyEntity : MonoBehaviour
     protected static float enemyHP;
     protected static float attackSpeed;
     protected static float movementSpeed;
-    [SerializeField] static Vector2 target; 
+    protected static float stopDistance;
+    protected static Vector2 target; 
 
     protected virtual void Movement(float speed)
     {
-        float distance = Vector2.Distance(gameObject.transform.position, target);
-        Vector2.MoveTowards(transform.position, target, distance);
+        Vector2 pos = transform.position; 
+
+        if(Vector2.Distance(pos, target) <= stopDistance)
+        {
+            transform.position = target;
+            return; 
+        }
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 }

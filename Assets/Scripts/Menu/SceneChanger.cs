@@ -22,6 +22,16 @@ public class SceneChanger : MonoBehaviour
 
     public void SwapToMainMenu()
     {
+        Debug.Log("Method Reached.");
+        settingsCanvas.SetActive(false);
+        Debug.Log("Canvas Set False:");
+        menuCanvas.SetActive(true);
+        Debug.Log("Canvas Set True:");
+    }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

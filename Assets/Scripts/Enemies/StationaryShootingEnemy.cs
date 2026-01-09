@@ -20,6 +20,7 @@ public class StationaryShootingEnemy : EnemyEntity
     // Update is called once per frame
     void Update()
     {
+        if(target != null)
         Movement(movementSpeed);
     }
 }

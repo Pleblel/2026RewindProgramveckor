@@ -11,12 +11,16 @@ public class PlayerShoot : MonoBehaviour
     float cooldown;
     float fireRate;
     public BulletTypes[] bullets;
+    float bulletSpread;
+    PlayerMovement playerMovement;
     private void Start()
     {
         firePoint = GetComponentInChildren<Transform>().Find("Fire Point");
+        playerMovement = GetComponent<PlayerMovement>();
     }
     void Update()
     {
+
         if (Input.GetKey(KeyCode.J) && Time.time >= cooldown)
         {
             cooldown = Time.time + 1f / fireRate;
@@ -45,7 +49,5 @@ public struct BulletTypes
 {
     public string name;
     public float scale;
-    public float speed;
-    public float damage;
     public GameObject bullet;
 }

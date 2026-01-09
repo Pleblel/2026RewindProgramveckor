@@ -20,7 +20,20 @@ public class PlayerShoot : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(playerMovement.speeds);
+        switch (playerMovement.speed)
+        {
+            case PlayerMovement.Speed.Focused:
+                bulletSpread = 0;
+                break;
+
+            case PlayerMovement.Speed.Unfocused:
+                bulletSpread = 1;
+                break;
+
+            default:
+                bulletSpread = 0.5f;
+                break;
+        }
         if (Input.GetKey(KeyCode.J) && Time.time >= cooldown)
         {
             cooldown = Time.time + 1f / fireRate;

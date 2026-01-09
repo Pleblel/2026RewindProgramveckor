@@ -7,7 +7,7 @@ using static PlayerMovement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Speeds")]
+    [Header("speed")]
     public float normalSpeed = 6f;
     private float currentSpeed;
     public enum Speed
@@ -42,21 +42,21 @@ public class PlayerMovement : MonoBehaviour
         bool unfocused = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         bool focused = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-        if (focused) speeds = Speeds.Focused;
-        else if (unfocused) speeds = Speeds.Unfocused;
-        else speeds = Speeds.Default;
+        if (focused) speed = Speed.Focused;
+        else if (unfocused) speed = Speed.Unfocused;
+        else speed = Speed.Default;
 
 
-        switch (speeds)
+        switch (speed)
         {
-            case Speeds.Default:
+            case Speed.Default:
                 currentSpeed = normalSpeed;
                 break;
-            case Speeds.Unfocused:
+            case Speed.Unfocused:
                 currentSpeed = normalSpeed * 1.5f;
                 break;
 
-            case Speeds.Focused:
+            case Speed.Focused:
                 currentSpeed = normalSpeed / 2;
                 break;
         }

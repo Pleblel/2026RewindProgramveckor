@@ -10,6 +10,5 @@ public class Bullet : PlayerBulletSuperClass
         bulletSpeed = 5f;
 
         BulletTravel(bulletSpeed);
-        
     }
 }

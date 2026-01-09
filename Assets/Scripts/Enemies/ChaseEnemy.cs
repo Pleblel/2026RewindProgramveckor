@@ -6,6 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class ChaseMovement : EnemyEntity
 {
+    //Darren Scott
+
+
     [SerializeField] GameObject playerTarget;
     [SerializeField] bool reachedPosition;
     bool hasBeenVisible;

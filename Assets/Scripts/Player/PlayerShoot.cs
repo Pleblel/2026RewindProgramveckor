@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
     }
     void Update()
     {
-
+        Debug.Log(playerMovement.speeds);
         if (Input.GetKey(KeyCode.J) && Time.time >= cooldown)
         {
             cooldown = Time.time + 1f / fireRate;

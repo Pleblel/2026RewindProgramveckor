@@ -8,7 +8,7 @@ public class Bullet : PlayerBulletSuperClass
     private void Update()
     {
         bulletSpeed = 5f;
-        moveDir = spread;
+
         BulletTravel(bulletSpeed);
         
     }

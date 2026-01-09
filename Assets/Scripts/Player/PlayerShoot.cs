@@ -13,6 +13,16 @@ public class PlayerShoot : MonoBehaviour
     public BulletTypes[] bullets;
     float bulletSpread;
     PlayerMovement playerMovement;
+
+    public static Vector2 ApplySpread(Vector2 baseDir, float spreadAngleDeg)
+    {
+        baseDir = baseDir.normalized;
+
+        float half = spreadAngleDeg * 0.5f;
+        float angle = Random.Range(-half, half);
+        return (Quaternion.Euler(0, 0, angle) * baseDir).normalized;
+    }
+
     private void Start()
     {
         firePoint = GetComponentInChildren<Transform>().Find("Fire Point");
@@ -56,6 +66,7 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 }
+
 
 [System.Serializable]
 public struct BulletTypes

@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using static PlayerMovement;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speeds")]
     public float normalSpeed = 6f;
     private float currentSpeed;
-    enum Speeds
+    public enum Speed
     {
         Default,
         Unfocused,
         Focused
     }
-    private Speeds speeds;
+    public Speed speed { get; private set; } = Speed.Default;
 
     [Header("Playfield margins")]
     [Range(0f, 0.49f)] public float leftMarginV = 0.20f;

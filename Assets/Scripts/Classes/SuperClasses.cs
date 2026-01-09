@@ -17,3 +17,17 @@ public class EnemyBulletSuperClass : MonoBehaviour
         transform.position += (Vector3)(moveDir.normalized * speed * Time.deltaTime);
     }
 } 
+
+public class EnemyEntity : MonoBehaviour
+{
+    protected static float enemyHP;
+    protected static float attackSpeed;
+    protected static float movementSpeed;
+    [SerializeField] static Vector2 target; 
+
+    protected virtual void Movement(float speed)
+    {
+        float distance = Vector2.Distance(gameObject.transform.position, target);
+        Vector2.MoveTowards(transform.position, target, distance);
+    }
+}

@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using static PlayerMovement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Speeds")]
+    [Header("speed")]
     public float normalSpeed = 6f;
     private float currentSpeed;
-    enum Speeds
+    public enum Speed
     {
         Default,
         Unfocused,
         Focused
     }
-    private Speeds speeds;
+    public Speed speed { get; private set; } = Speed.Default;
 
     [Header("Playfield margins")]
     [Range(0f, 0.49f)] public float leftMarginV = 0.20f;
@@ -41,21 +42,21 @@ public class PlayerMovement : MonoBehaviour
         bool unfocused = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         bool focused = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-        if (focused) speeds = Speeds.Focused;
-        else if (unfocused) speeds = Speeds.Unfocused;
-        else speeds = Speeds.Default;
+        if (focused) speed = Speed.Focused;
+        else if (unfocused) speed = Speed.Unfocused;
+        else speed = Speed.Default;
 
 
-        switch (speeds)
+        switch (speed)
         {
-            case Speeds.Default:
+            case Speed.Default:
                 currentSpeed = normalSpeed;
                 break;
-            case Speeds.Unfocused:
+            case Speed.Unfocused:
                 currentSpeed = normalSpeed * 1.5f;
                 break;
 
-            case Speeds.Focused:
+            case Speed.Focused:
                 currentSpeed = normalSpeed / 2;
                 break;
         }
@@ -68,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (cam != null)
         {
-            // For orthographic camera z doesn't matter; for perspective we use distance to the player plane.
             float zDist = Mathf.Abs(transform.position.z - cam.transform.position.z);
 
             float minX = cam.ViewportToWorldPoint(new Vector3(leftMarginV, 0f, zDist)).x;

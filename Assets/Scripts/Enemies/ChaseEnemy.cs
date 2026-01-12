@@ -19,7 +19,8 @@ public class ChaseMovement : EnemyEntity
     void Start()
     {
         FindPlayer();
-        enemyHP = 100f;
+        enemyHP = 20f;
+        currentHP = enemyHP;
         attackSpeed = 2f;
         movementSpeed = 5f;
         stopDistance = 2f;

@@ -14,6 +14,7 @@ public class StationaryShootingEnemy : EnemyEntity
     void Start()
     {
         enemyHP = 100f;
+        currentHP = enemyHP; 
         attackSpeed = 2f;
         movementSpeed = 25f;
         stopDistance = 0.05f;

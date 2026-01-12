@@ -59,7 +59,10 @@ public abstract  class EnemyEntity : MonoBehaviour
     protected float stopDistance;
     protected Vector2 target;
     protected Score score;
-
+    private void Awake()
+    {
+        score = GameObject.Find("GameManager").GetComponent<Score>();
+    }
     protected virtual void Movement(float speed)
     {
         Vector2 pos = transform.position; 
@@ -78,7 +81,7 @@ public abstract  class EnemyEntity : MonoBehaviour
 
         if(currentHP <= 0)
         {
-
+            score.AddScore(1000);
             Destroy(gameObject);
         }
     }

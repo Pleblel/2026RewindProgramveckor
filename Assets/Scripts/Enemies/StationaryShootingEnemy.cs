@@ -33,4 +33,5 @@ public class StationaryShootingEnemy : EnemyEntity
         target = seat.position;
         hasTarget = true; 
     }
+
 }

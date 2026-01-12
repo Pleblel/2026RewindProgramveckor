@@ -17,6 +17,7 @@ public class Bullet : PlayerBulletSuperClass
         {
             var enemy = collision.GetComponent<EnemyEntity>();
             enemy.TakeDamage(damage);
+            Destroy(gameObject);
         }
 
         

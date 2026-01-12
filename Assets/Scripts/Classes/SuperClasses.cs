@@ -17,21 +17,36 @@ public class EnemyBulletSuperClass : MonoBehaviour
         transform.position += (Vector3)(moveDir.normalized * speed * Time.deltaTime);
     }
 }
+
 public class PlayerBulletSuperClass : MonoBehaviour
 {
-    protected static float bulletSpeed;
+    protected float bulletSpeed;
     protected Vector2 moveDir = Vector2.up;
-
+    public void Init(Vector2 dir, float speed)
+    {
+        moveDir = dir.normalized;
+        bulletSpeed = speed;
+        transform.up = moveDir;
+    }
+    protected virtual void Update()
+    {
+        BulletTravel(bulletSpeed);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
             Destroy(gameObject);
     }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
     protected virtual void BulletTravel(float speed)
     {
-        transform.position += (Vector3)(moveDir.normalized * speed * Time.deltaTime);
+        transform.position += (Vector3)(moveDir * speed * Time.deltaTime);
     }
 }
+
 
 public class EnemyEntity : MonoBehaviour
 {

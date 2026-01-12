@@ -21,12 +21,14 @@ public class EnemyBulletSuperClass : MonoBehaviour
 public class PlayerBulletSuperClass : MonoBehaviour
 {
     protected float bulletSpeed;
+    protected int damage;
     protected Vector2 moveDir = Vector2.up;
-    public void Init(Vector2 dir, float speed)
+    public void Init(Vector2 dir, float speed, int d)
     {
         moveDir = dir.normalized;
         bulletSpeed = speed;
         transform.up = moveDir;
+        damage = d;
     }
     protected virtual void Update()
     {
@@ -50,11 +52,11 @@ public class PlayerBulletSuperClass : MonoBehaviour
 
 public class EnemyEntity : MonoBehaviour
 {
-    protected static float enemyHP;
-    protected static float attackSpeed;
-    protected static float movementSpeed;
-    protected static float stopDistance;
-    protected static Vector2 target; 
+    protected float enemyHP;
+    protected float attackSpeed;
+    protected float movementSpeed;
+    protected float stopDistance;
+    protected Vector2 target; 
 
     protected virtual void Movement(float speed)
     {

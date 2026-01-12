@@ -83,7 +83,7 @@ public class PlayerShoot : MonoBehaviour
         var pb = go.GetComponent<PlayerBulletSuperClass>();
         if (pb != null)
         {
-            pb.Init(dir, type.speed);
+            pb.Init(dir, type.speed, 10);
         }
     }
 

@@ -11,8 +11,8 @@ public class Score : MonoBehaviour
         score = 1000;
     }
 
-    void AddScore(int s)
+    public void AddScore(int s)
     {
-
+        score += (int)(s * scoreMultiplier);
     }
 }

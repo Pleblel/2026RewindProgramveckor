@@ -9,4 +9,18 @@ public class Bullet : PlayerBulletSuperClass
     {
         BulletTravel(bulletSpeed);
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            var enemy = collision.GetComponent<EnemyEntity>();
+            enemy.TakeDamage(damage);
+        }
+
+        
+           
+    }
+
 }

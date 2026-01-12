@@ -50,14 +50,15 @@ public class PlayerBulletSuperClass : MonoBehaviour
 }
 
 
-public class EnemyEntity : MonoBehaviour
+public abstract  class EnemyEntity : MonoBehaviour
 {
     protected float enemyHP;
     protected float currentHP;
     protected float attackSpeed;
     protected float movementSpeed;
     protected float stopDistance;
-    protected Vector2 target; 
+    protected Vector2 target;
+    protected Score score;
 
     protected virtual void Movement(float speed)
     {
@@ -71,17 +72,13 @@ public class EnemyEntity : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
-
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         currentHP -= damage; 
 
         if(currentHP <= 0)
         {
+
             Destroy(gameObject);
         }
     }

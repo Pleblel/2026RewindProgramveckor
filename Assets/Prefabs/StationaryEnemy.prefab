@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6767615373119076873}
   - component: {fileID: 4762801600047170823}
   - component: {fileID: -1846137202019939506}
+  - component: {fileID: 3973823522203522630}
   m_Layer: 0
   m_Name: StationaryEnemy
   m_TagString: Enemy
@@ -172,3 +173,41 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &3973823522203522630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239822236569693302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e27ac5000d99a4f9f9406fb01c8b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7894203399539789400, guid: 4d4416190b2bee745bc4346f977bf856, type: 3}
+  ovalBulletPrefab: {fileID: 1980569769166733230, guid: 320be4f9c0ce88047b0f2c0637897e0e, type: 3}
+  firePoint: {fileID: 0}
+  player: {fileID: 0}
+  allowedPatterns: 0000000001000000020000000300000004000000
+  patternCooldown: 0.5
+  randomizeEveryCycle: 1
+  ringBulletCount: 36
+  ringSpeed: 4
+  ringAngleOffset: 0
+  coneBulletCount: 10
+  coneArcDegrees: 60
+  coneSpeed: 7.6
+  coneBaseAngle: 270
+  aimedCount: 8
+  aimedArcDegrees: 25
+  aimedSpeed: 5
+  spiralDuration: 2
+  spiralFireRate: 0.06
+  spiralBulletsPerTick: 8
+  spiralSpeed: 6.5
+  spiralDegreesPerTick: 12
+  waveRings: 2
+  waveRingDelay: 0.25
+  waveRingCount: 24
+  waveSpeed: 3

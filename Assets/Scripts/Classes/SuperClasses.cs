@@ -4,17 +4,56 @@ using UnityEngine;
 
 public class EnemyBulletSuperClass : MonoBehaviour
 {
-    protected static float bulletSpeed;
-    protected static Vector2 moveDir = Vector2.up;
+    [SerializeField] private float lifeTime = 8f;
+
+    private Vector2 moveDir = Vector2.down;
+    private float bulletSpeed = 6f;
+
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        // Optional: auto-despawn so bullets don't live forever
+        CancelInvoke();
+        if (lifeTime > 0f)
+            Invoke(nameof(Despawn), lifeTime);
+    }
+
+    // This matches the pattern shooter usage: bullet.Fire(dir, speed)
+    public virtual void Fire(Vector2 dir, float speed)
+    {
+        moveDir = dir.normalized;
+        bulletSpeed = speed;
+
+        if (rb != null)
+        {
+            rb.velocity = moveDir * bulletSpeed;
+        }
+    }
+
+    private void Update()
+    {
+        // If no Rigidbody2D, move by transform as a fallback
+        if (rb == null)
+            transform.position += (Vector3)(moveDir * bulletSpeed * Time.deltaTime);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            Destroy(gameObject);        
+        {
+            Destroy(gameObject);
+        }
     }
-    protected virtual void BulletTravel(float speed)
+
+    private void Despawn()
     {
-        transform.position += (Vector3)(moveDir.normalized * speed * Time.deltaTime);
+        Destroy(gameObject);
     }
 }
 

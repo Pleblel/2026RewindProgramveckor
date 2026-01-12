@@ -7,7 +7,7 @@ public class EnemyBulletSuperClass : MonoBehaviour
     [SerializeField] private float lifeTime = 8f;
 
     private Vector2 moveDir = Vector2.down;
-    private float bulletSpeed = 6f;
+    protected float bulletSpeed = 8f;
 
     private Rigidbody2D rb;
 
@@ -36,7 +36,7 @@ public class EnemyBulletSuperClass : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // If no Rigidbody2D, move by transform as a fallback
         if (rb == null)
@@ -52,6 +52,11 @@ public class EnemyBulletSuperClass : MonoBehaviour
     }
 
     private void Despawn()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

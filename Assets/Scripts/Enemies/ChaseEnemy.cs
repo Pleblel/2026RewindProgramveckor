@@ -11,19 +11,22 @@ public class ChaseMovement : EnemyEntity
 
     [SerializeField] GameObject playerTarget;
     [SerializeField] bool reachedPosition;
+    bool firedBullet = false;
     bool hasBeenVisible;
     [SerializeField] GameObject runawayTarget;
-    [SerializeField] float stayTimer = 2f; 
+    [SerializeField] float stayTimer = 2f;
+    [SerializeField] GameObject bullet;
+    [SerializeField] float distanceStop = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         FindPlayer();
-        enemyHP = 20f;
+        enemyHP = 10f;
         currentHP = enemyHP;
         attackSpeed = 2f;
         movementSpeed = 5f;
-        stopDistance = 2f;
+        stopDistance = distanceStop;
         target = playerTarget.transform.position; 
     }
 
@@ -36,7 +39,13 @@ public class ChaseMovement : EnemyEntity
         {
             stayTimer -= Time.deltaTime;
 
-            if (stayTimer <= 0f)
+            if (!firedBullet)
+            {
+                FireBullet();
+                firedBullet = true;
+            }
+
+            if (stayTimer <= 0f) 
                 RunAway(movementSpeed);
         }
            
@@ -76,6 +85,11 @@ public class ChaseMovement : EnemyEntity
     void FindPlayer()
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player"); 
+    }
+
+    void FireBullet()
+    {
+        Instantiate(bullet, transform.position, Quaternion.identity);
     }
 
     private void OnBecameVisible()

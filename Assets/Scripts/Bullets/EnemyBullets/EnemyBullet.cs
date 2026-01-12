@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class EnemyBullet : EnemyBulletSuperClass
 {
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+   
 }

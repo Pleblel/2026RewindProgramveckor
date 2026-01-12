@@ -102,6 +102,7 @@ MonoBehaviour:
   reachedPosition: 0
   runawayTarget: {fileID: 5483889326898253895}
   stayTimer: 0.8
+  bullet: {fileID: 7852623957063948419, guid: f164ae247b3aee843b020ac5fc3d09e4, type: 3}
 --- !u!1 &5483889326898253895
 GameObject:
   m_ObjectHideFlags: 0

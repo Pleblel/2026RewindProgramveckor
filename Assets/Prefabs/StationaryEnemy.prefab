@@ -189,7 +189,7 @@ MonoBehaviour:
   ovalBulletPrefab: {fileID: 1980569769166733230, guid: 320be4f9c0ce88047b0f2c0637897e0e, type: 3}
   firePoint: {fileID: 0}
   player: {fileID: 0}
-  allowedPatterns: 0000000001000000020000000300000004000000
+  allowedPatterns: 0000000002000000030000000400000002000000
   patternCooldown: 0.5
   randomizeEveryCycle: 1
   ringBulletCount: 36
@@ -198,7 +198,7 @@ MonoBehaviour:
   coneBulletCount: 10
   coneArcDegrees: 60
   coneSpeed: 7.6
-  coneBaseAngle: 270
+  coneBaseAngle: 250
   aimedCount: 8
   aimedArcDegrees: 25
   aimedSpeed: 5

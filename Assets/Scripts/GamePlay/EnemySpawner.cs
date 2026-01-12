@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
    [SerializeField] GameObject stationaryEnemy;
    [SerializeField] GameObject chaseEnemy;
    [SerializeField] List<GameObject> stationaryEnemies = new List<GameObject>();
+   [SerializeField] List<Transform> stationarySeatTargets;
    [SerializeField] Transform stationarySpawnPoint;
     public bool stationaryEnemiesAllowed;
 
@@ -44,10 +45,27 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnStationaryEnemies()
     {
+        List<int> indices = new List<int>();
+        for(int i = 0; i < stationarySeatTargets.Count; i++)
+        {
+            indices.Add(i);
+        }
+
+
         for (int i = 0; i < spawnAmount; i++)
         {
-            GameObject enemy = Instantiate(stationaryEnemy, stationarySpawnPoint.position, stationarySpawnPoint.rotation);
-            stationaryEnemies.Add(enemy);
+            int pick = Random.Range(0, indices.Count);
+            int seatIndex = indices[pick];
+            indices.RemoveAt(pick);
+
+            Transform seat = stationarySeatTargets[seatIndex];
+
+            GameObject enemyGO = Instantiate(stationaryEnemy, stationarySpawnPoint.position, stationarySpawnPoint.rotation);
+            stationaryEnemies.Add(enemyGO);
+
+            var enemy = enemyGO.GetComponent<StationaryShootingEnemy>();
+            if (enemy != null)
+                enemy.FindTargetPosition(seat);
         }
     }
 

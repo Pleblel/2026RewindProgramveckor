@@ -273,9 +273,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcfed6b3ed9ce042805171df0c0229f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stationaryEnemy: {fileID: 4140361316916804942, guid: 99cb2e75d60493243b37b7d65757d653, type: 3}
+  stationaryEnemy: {fileID: 3239822236569693302, guid: 1d923c472c0cac04d984ac7e297b367a, type: 3}
   chaseEnemy: {fileID: 0}
   stationaryEnemies: []
+  stationarySeatTargets:
+  - {fileID: 1934254180}
+  - {fileID: 1030470977}
   stationarySpawnPoint: {fileID: 438452451}
   stationaryEnemiesAllowed: 0
   minRespawnTime: 4

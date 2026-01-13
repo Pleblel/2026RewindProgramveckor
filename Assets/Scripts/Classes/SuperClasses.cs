@@ -101,7 +101,6 @@ public abstract  class EnemyEntity : MonoBehaviour
 {
     protected float enemyHP;
     protected float currentHP;
-    protected float attackSpeed;
     protected float movementSpeed;
     protected float stopDistance;
     protected Vector2 target;
@@ -129,8 +128,13 @@ public abstract  class EnemyEntity : MonoBehaviour
         if(currentHP <= 0)
         {
             score.AddScore(1000);
-            Destroy(gameObject);
+            Death();
         }
+    }
+
+    public virtual void Death()
+    {
+        Destroy(gameObject);
     }
 }
 

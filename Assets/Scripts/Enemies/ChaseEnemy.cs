@@ -25,7 +25,6 @@ public class ChaseMovement : EnemyEntity
         distanceStop = Random.Range(2, 6);
         enemyHP = 10f;
         currentHP = enemyHP;
-        attackSpeed = 2f;
         movementSpeed = 5f;
         stopDistance = distanceStop;
         target = playerTarget.transform.position; 

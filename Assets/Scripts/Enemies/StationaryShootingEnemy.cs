@@ -15,7 +15,6 @@ public class StationaryShootingEnemy : EnemyEntity
     {
         enemyHP = 100f;
         currentHP = enemyHP; 
-        attackSpeed = 2f;
         movementSpeed = 25f;
         stopDistance = 0.05f;
         target = targetGameOBJ.transform.position;

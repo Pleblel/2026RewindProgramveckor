@@ -702,8 +702,41 @@ Transform:
   - {fileID: 488879277}
   - {fileID: 1416433697}
   - {fileID: 1403300821}
+  - {fileID: 1034676775}
+  - {fileID: 624427036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &624427035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624427036}
+  m_Layer: 0
+  m_Name: SideScrollEnemySpawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &624427036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624427035}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 12.48, y: -8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 561208121}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &678141259
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +879,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1034676774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034676775}
+  m_Layer: 0
+  m_Name: SideScrollEnemySpawn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1034676775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034676774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.48, y: -8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 561208121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236779453
 GameObject:
@@ -1352,8 +1416,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stationaryEnemy: {fileID: 3239822236569693302, guid: 1d923c472c0cac04d984ac7e297b367a, type: 3}
   chaseEnemy: {fileID: 4140361316916804942, guid: 99cb2e75d60493243b37b7d65757d653, type: 3}
+  sideEnemy: {fileID: 5001216393832947665, guid: 215f6058c10bbf14bb3f1c5fa273d2f3, type: 3}
   stationaryEnemies: []
   chaseEnemies: []
+  sideEnemies: []
   stationarySpawnPoint: {fileID: 488879277}
   stationarySeatTargets:
   - {fileID: 1806653447}
@@ -1368,6 +1434,13 @@ MonoBehaviour:
   chaseSpawnGap: 0.5
   minChaseRespawnTime: 3
   maxChaseRespawnTime: 5
+  sideEnemySpawns:
+  - {fileID: 1034676775}
+  - {fileID: 624427036}
+  sideSpawnAmount: 4
+  sideSpawnGap: 0.5
+  minSideRespawnTime: 3
+  maxSideRespawnTime: 5
 --- !u!114 &2049638969
 MonoBehaviour:
   m_ObjectHideFlags: 0

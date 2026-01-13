@@ -7,10 +7,12 @@ public class EnemySpawner : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] GameObject stationaryEnemy;
     [SerializeField] GameObject chaseEnemy;
+    [SerializeField] GameObject sideEnemy;
 
     [Header("Tracking")]
     [SerializeField] List<GameObject> stationaryEnemies = new List<GameObject>();
     [SerializeField] List<GameObject> chaseEnemies = new List<GameObject>();
+    [SerializeField] List<GameObject> sideEnemies = new List<GameObject>();
 
     [Header("Stationary Spawning")]
     [SerializeField] Transform stationarySpawnPoint;
@@ -23,18 +25,30 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<Transform> chaseEnemySpawns = new List<Transform>();
     [SerializeField] int chaseSpawnAmount;         // enemies per burst
     [SerializeField] float chaseSpawnGap = 0.5f;       // seconds between each spawn in the burst
-    [SerializeField] int minChaseRespawnTime = 3;      // time between bursts
+    [SerializeField] int minChaseRespawnTime = 3;         // time between bursts
     [SerializeField] int maxChaseRespawnTime = 5;
+
+    [Header("SideScroll Spawning")]
+    [SerializeField] List<Transform> sideEnemySpawns = new List<Transform>();
+    [SerializeField] int sideSpawnAmount;         // enemies per burst
+    [SerializeField] float sideSpawnGap = 0.5f;       // seconds between each spawn in the burst
+    [SerializeField] int minSideRespawnTime = 3;         // time between bursts
+    [SerializeField] int maxSideRespawnTime = 5;
+
 
     private float stationaryTimer = 0f;
     private float chaseTimer = 0f;
+    private float sideTimer = 0f;
+    private int sideSpawnOffset = 0;
     private bool spawningChase = false;
+    private bool spawningSide = false;
 
     void Start()
     {
         // Start with random initial delays (set to 0f if you want immediate spawns)
         stationaryTimer = Random.Range(minStationaryRespawnTime, maxStationaryRespawnTime + 1);
         chaseTimer = Random.Range(minChaseRespawnTime, maxChaseRespawnTime + 1);
+        sideTimer = Random.Range(minSideRespawnTime, maxSideRespawnTime + 1);
     }
 
     void Update()
@@ -43,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
         HandleStationarySpawns();
         HandleChaseSpawns();
+        HandleSideSpawns();
     }
 
     // ---------------- Stationary ----------------
@@ -142,6 +157,51 @@ public class EnemySpawner : MonoBehaviour
 
         spawningChase = false;
     }
+
+    // ---------------- Side Enemy --------------
+
+    void HandleSideSpawns()
+    {
+        if (spawningSide)
+            return;
+
+        if (sideEnemy == null || sideEnemySpawns == null || sideEnemySpawns.Count == 0)
+            return;
+
+        if (sideTimer > 0f)
+        {
+            sideTimer -= Time.deltaTime;
+            return;
+        }
+
+        // Start burst and reset timer for next burst
+        StartCoroutine(SpawnSideBurst());
+        sideTimer = Random.Range(minSideRespawnTime, maxSideRespawnTime + 1);
+    }
+
+
+    IEnumerator SpawnSideBurst()
+    {
+        spawningSide = true;
+
+        sideSpawnAmount = Random.Range(3, 13);
+        
+
+        for (int i = 0; i < sideSpawnAmount; i++)
+        {
+            sideSpawnOffset = Random.Range(-1, 2);
+            Transform sp = sideEnemySpawns[Random.Range(0, chaseEnemySpawns.Count)];
+            Vector3 pos =  sp.position + new Vector3(0f, sideSpawnOffset, 0f);
+            GameObject enemyGO = Instantiate(sideEnemy,  pos, sp.rotation);
+            sideEnemies.Add(enemyGO);
+
+            if (i < sideSpawnAmount - 1)
+                yield return new WaitForSeconds(sideSpawnGap);
+        }
+
+        spawningSide = false;
+    }
+
 
     // ---------------- Cleanup ----------------
 

@@ -220,6 +220,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5235814798041013951, guid: f400a5f70fb94e14a80b85098156562e, type: 3}
   m_PrefabInstance: {fileID: 6244402411943126962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &55455295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 55455296}
+  m_Layer: 0
+  m_Name: ChaseEnemySpawn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &55455296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55455295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.62, y: -1.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 343048335}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109982113
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,16 +341,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stationaryEnemy: {fileID: 3239822236569693302, guid: 1d923c472c0cac04d984ac7e297b367a, type: 3}
-  chaseEnemy: {fileID: 0}
+  chaseEnemy: {fileID: 4140361316916804942, guid: 99cb2e75d60493243b37b7d65757d653, type: 3}
   stationaryEnemies: []
+  chaseEnemies: []
+  stationarySpawnPoint: {fileID: 438452451}
   stationarySeatTargets:
   - {fileID: 1934254180}
   - {fileID: 1030470977}
-  stationarySpawnPoint: {fileID: 438452451}
-  stationaryEnemiesAllowed: 0
-  minRespawnTime: 4
-  maxRespawnTime: 9
-  spawnAmount: 2
+  stationarySpawnAmount: 2
+  minStationaryRespawnTime: 4
+  maxStationaryRespawnTime: 9
+  chaseEnemySpawns:
+  - {fileID: 55455296}
+  - {fileID: 2138534019}
+  chaseSpawnAmount: 6
+  chaseSpawnGap: 0.5
+  minChaseRespawnTime: 3
+  maxChaseRespawnTime: 5
 --- !u!1 &343048334
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +388,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 438452451}
+  - {fileID: 55455296}
+  - {fileID: 2138534019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353475022
@@ -1082,6 +1122,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1909325890}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2138534018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2138534019}
+  m_Layer: 0
+  m_Name: ChaseEnemySpawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2138534019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138534018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.62, y: -1.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 343048335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6244402411943126962
 PrefabInstance:

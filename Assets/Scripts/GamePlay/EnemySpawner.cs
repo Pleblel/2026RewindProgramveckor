@@ -4,55 +4,87 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-   [SerializeField] GameObject stationaryEnemy;
-   [SerializeField] GameObject chaseEnemy;
-   [SerializeField] List<GameObject> stationaryEnemies = new List<GameObject>();
-   [SerializeField] List<Transform> stationarySeatTargets;
-   [SerializeField] Transform stationarySpawnPoint;
-    public bool stationaryEnemiesAllowed;
+    [Header("Prefabs")]
+    [SerializeField] GameObject stationaryEnemy;
+    [SerializeField] GameObject chaseEnemy;
 
-    [SerializeField] int minRespawnTime = 4;
-    [SerializeField] int maxRespawnTime = 9;
+    [Header("Tracking")]
+    [SerializeField] List<GameObject> stationaryEnemies = new List<GameObject>();
+    [SerializeField] List<GameObject> chaseEnemies = new List<GameObject>();
 
-    [SerializeField] int spawnAmount = 2;   // how many to spawn when timer ends
-    float timer = 0f;
+    [Header("Stationary Spawning")]
+    [SerializeField] Transform stationarySpawnPoint;
+    [SerializeField] List<Transform> stationarySeatTargets = new List<Transform>();
+    [SerializeField] int stationarySpawnAmount = 2;
+    [SerializeField] int minStationaryRespawnTime = 4;
+    [SerializeField] int maxStationaryRespawnTime = 9;
 
-    // Start is called before the first frame update
+    [Header("Chase Spawning")]
+    [SerializeField] List<Transform> chaseEnemySpawns = new List<Transform>();
+    [SerializeField] int chaseSpawnAmount;         // enemies per burst
+    [SerializeField] float chaseSpawnGap = 0.5f;       // seconds between each spawn in the burst
+    [SerializeField] int minChaseRespawnTime = 3;      // time between bursts
+    [SerializeField] int maxChaseRespawnTime = 5;
+
+    private float stationaryTimer = 0f;
+    private float chaseTimer = 0f;
+    private bool spawningChase = false;
+
     void Start()
     {
-        
+        // Start with random initial delays (set to 0f if you want immediate spawns)
+        stationaryTimer = Random.Range(minStationaryRespawnTime, maxStationaryRespawnTime + 1);
+        chaseTimer = Random.Range(minChaseRespawnTime, maxChaseRespawnTime + 1);
     }
 
-    // Update is called once per frame
     void Update()
     {
         CleanupNulls();
 
+        HandleStationarySpawns();
+        HandleChaseSpawns();
+    }
+
+    // ---------------- Stationary ----------------
+
+    void HandleStationarySpawns()
+    {
+        // If ANY stationary is alive, do nothing (no spawning + timer doesn't tick)
         if (stationaryEnemies.Count > 0)
             return;
 
-        if (timer > 0f)
+        // None alive -> countdown
+        if (stationaryTimer > 0f)
         {
-            timer -= Time.deltaTime;
+            stationaryTimer -= Time.deltaTime;
             return;
         }
 
-        // Timer finished -> spawn + reset timer for next time (after they die again)
+        // Timer done -> spawn wave, reset timer (next wave only after they die again)
         SpawnStationaryEnemies();
-        timer = Random.Range(minRespawnTime, maxRespawnTime + 1); // int range inclusive
+        stationaryTimer = Random.Range(minStationaryRespawnTime, maxStationaryRespawnTime + 1);
     }
-
 
     void SpawnStationaryEnemies()
     {
-        List<int> indices = new List<int>();
-        for(int i = 0; i < stationarySeatTargets.Count; i++)
+        if (stationaryEnemy == null || stationarySpawnPoint == null)
         {
-            indices.Add(i);
+            Debug.LogError("StationaryEnemy prefab or StationarySpawnPoint is not assigned.");
+            return;
         }
 
+        if (stationarySeatTargets == null || stationarySeatTargets.Count < stationarySpawnAmount)
+        {
+            Debug.LogError("Not enough stationarySeatTargets for stationarySpawnAmount.");
+            return;
+        }
 
-        for (int i = 0; i < spawnAmount; i++)
+        // Pick unique seats
+        List<int> indices = new List<int>();
+        for (int i = 0; i < stationarySeatTargets.Count; i++)
+            indices.Add(i);
+
+        for (int i = 0; i < stationarySpawnAmount; i++)
         {
             int pick = Random.Range(0, indices.Count);
             int seatIndex = indices[pick];
@@ -66,12 +98,56 @@ public class EnemySpawner : MonoBehaviour
             var enemy = enemyGO.GetComponent<StationaryShootingEnemy>();
             if (enemy != null)
                 enemy.FindTargetPosition(seat);
+            else
+                Debug.LogWarning("Spawned stationaryEnemy has no StationaryShootingEnemy component.");
         }
     }
+
+    // ---------------- Chase ----------------
+
+    void HandleChaseSpawns()
+    {
+        if (spawningChase)
+            return;
+
+        if (chaseEnemy == null || chaseEnemySpawns == null || chaseEnemySpawns.Count == 0)
+            return;
+
+        if (chaseTimer > 0f)
+        {
+            chaseTimer -= Time.deltaTime;
+            return;
+        }
+
+        // Start burst and reset timer for next burst
+        StartCoroutine(SpawnChaseBurst());
+        chaseTimer = Random.Range(minChaseRespawnTime, maxChaseRespawnTime + 1);
+    }
+
+    IEnumerator SpawnChaseBurst()
+    {
+        spawningChase = true;
+
+        chaseSpawnAmount = Random.Range(3, 13);
+
+        for (int i = 0; i < chaseSpawnAmount; i++)
+        {
+            Transform sp = chaseEnemySpawns[Random.Range(0, chaseEnemySpawns.Count)];
+            GameObject enemyGO = Instantiate(chaseEnemy, sp.position, sp.rotation);
+            chaseEnemies.Add(enemyGO);
+
+            if (i < chaseSpawnAmount - 1)
+                yield return new WaitForSeconds(chaseSpawnGap);
+        }
+
+        spawningChase = false;
+    }
+
+    // ---------------- Cleanup ----------------
 
     void CleanupNulls()
     {
         stationaryEnemies.RemoveAll(e => e == null);
+        chaseEnemies.RemoveAll(e => e == null);
     }
-
 }

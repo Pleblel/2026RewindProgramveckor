@@ -16,12 +16,13 @@ public class ChaseMovement : EnemyEntity
     [SerializeField] GameObject runawayTarget;
     [SerializeField] float stayTimer = 2f;
     [SerializeField] GameObject bullet;
-    [SerializeField] float distanceStop = 5f;
+    [SerializeField] float distanceStop;
 
     // Start is called before the first frame update
     void Start()
     {
         FindPlayer();
+        distanceStop = Random.Range(2, 6);
         enemyHP = 10f;
         currentHP = enemyHP;
         attackSpeed = 2f;

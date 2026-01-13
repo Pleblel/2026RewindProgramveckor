@@ -257,3 +257,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 7537236807516473336}
+  bullet: {fileID: 7852623957063948419, guid: f164ae247b3aee843b020ac5fc3d09e4, type: 3}

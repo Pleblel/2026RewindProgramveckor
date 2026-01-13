@@ -7,6 +7,7 @@ public class SideScrollEnemy : EnemyEntity
 {
 
     [SerializeField] Transform targetPoint;
+    [SerializeField] GameObject bullet;
     bool hasBeenVisible = false;
 
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class SideScrollEnemy : EnemyEntity
 
     public override void Death()
     {
-
+        Instantiate(bullet,transform.position,transform.rotation);
         Destroy(gameObject);
     }
 

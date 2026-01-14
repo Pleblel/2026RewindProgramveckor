@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5856758941000590970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4887591115321133541}
+  - component: {fileID: 2749084689195719293}
+  - component: {fileID: 5079591049689391470}
+  - component: {fileID: 8052858772495017943}
+  m_Layer: 0
+  m_Name: Primadon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4887591115321133541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856758941000590970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 1.7, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2749084689195719293
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856758941000590970}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Color: {r: 0.5, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &5079591049689391470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856758941000590970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e27ac5000d99a4f9f9406fb01c8b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7894203399539789400, guid: 4d4416190b2bee745bc4346f977bf856, type: 3}
+  ovalBulletPrefab: {fileID: 1980569769166733230, guid: 320be4f9c0ce88047b0f2c0637897e0e, type: 3}
+  firePoint: {fileID: 4887591115321133541}
+  player: {fileID: 0}
+  allowedPatterns: 0500000006000000080000000700000009000000
+  patternCooldown: 2
+  randomizeEveryCycle: 1
+  ringBulletCount: 36
+  ringSpeed: 6
+  ringAngleOffset: 0
+  coneBulletCount: 10
+  coneArcDegrees: 60
+  coneSpeed: 7
+  coneBaseAngle: 270
+  aimedCount: 8
+  aimedArcDegrees: 25
+  aimedSpeed: 8
+  spiralDuration: 2
+  spiralFireRate: 0.06
+  spiralBulletsPerTick: 2
+  spiralSpeed: 6.5
+  spiralDegreesPerTick: 12
+  waveRings: 3
+  waveRingDelay: 0.25
+  waveRingCount: 24
+  waveSpeed: 6
+  crossDirections: 8
+  crossSpeed: 7
+  crossAngleOffset: 0
+  sprayCount: 40
+  spraySpeed: 7
+  sprayMinAngle: 0
+  sprayMaxAngle: 360
+  trapCount: 32
+  trapRadius: 2.5
+  trapHoldTime: 2.5
+  trapReleaseSpeed: 6
+  trapAngleOffset: 0
+  trapUseOvalBullets: 1
+  trapShotInterval: 0.35
+  trapAimedCount: 3
+  trapAimedArc: 60
+  trapAimedSpeed: 9
+  trapRotate: 1
+  trapRotateDegPerSec: 90
+  trapClockwise: 1
+  fanDuration: 2
+  fanFireRate: 0.08
+  fanConeCount: 12
+  fanArc: 70
+  fanSpeed: 8
+  fanStartAngle: 210
+  fanEndAngle: 330
+  doubleSpiralDuration: 2
+  doubleSpiralFireRate: 0.06
+  doubleSpiralSpeed: 6.5
+  doubleSpiralDegreesPerTick: 14
+--- !u!114 &8052858772495017943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856758941000590970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ddd0ddb9889124ea175f0613dd7554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moveChancePerCooldown: 0.25
+  arriveThreshold: 0.05

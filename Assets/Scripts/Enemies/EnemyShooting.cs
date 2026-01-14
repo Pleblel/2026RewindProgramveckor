@@ -1,3 +1,4 @@
+ï»¿// EnemyPatternShooter.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,23 @@ public class EnemyPatternShooter : MonoBehaviour
         ConeBurst,
         AimedBurst,
         Spiral,
-        MultiRingWaves
+        MultiRingWaves,
+
+        CrossBurst,
+        RandomSpray,
+        PlayerRingTrap,
+        SweepingFan,
+        DoubleSpiral
     }
+
+    // âœ… Primadon can read this
+    public bool IsShooting { get; private set; }
 
     [Header("References")]
     [SerializeField] private EnemyBulletSuperClass bulletPrefab;
     [SerializeField] private EnemyBulletSuperClass ovalBulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private Transform player; // optional; can auto-find by tag
+    [SerializeField] private Transform player;
 
     [Header("Pattern Pool (randomly pick from these)")]
     [SerializeField]
@@ -28,11 +38,10 @@ public class EnemyPatternShooter : MonoBehaviour
         Pattern.AimedBurst,
         Pattern.Spiral,
         Pattern.MultiRingWaves
-        
     };
 
     [Header("General")]
-    [SerializeField] private float patternCooldown = 2.0f;
+    public float patternCooldown = 2.0f; // âœ… you said this is public
     [SerializeField] private bool randomizeEveryCycle = true;
 
     [Header("Ring 360")]
@@ -44,7 +53,7 @@ public class EnemyPatternShooter : MonoBehaviour
     [SerializeField] private int coneBulletCount = 10;
     [SerializeField] private float coneArcDegrees = 60f;
     [SerializeField] private float coneSpeed = 7f;
-    [SerializeField] private float coneBaseAngle = 270f; // down by default (Unity 2D up=90, right=0)
+    [SerializeField] private float coneBaseAngle = 270f;
 
     [Header("Aimed Burst")]
     [SerializeField] private int aimedCount = 8;
@@ -65,6 +74,53 @@ public class EnemyPatternShooter : MonoBehaviour
     [SerializeField] private int waveRingCount = 24;
     [SerializeField] private float waveSpeed = 6f;
 
+    // -------------------- Boss patterns --------------------
+    [Header("Cross Burst (boss)")]
+    [SerializeField] private int crossDirections = 8;
+    [SerializeField] private float crossSpeed = 7f;
+    [SerializeField] private float crossAngleOffset = 0f;
+
+    [Header("Random Spray (boss)")]
+    [SerializeField] private int sprayCount = 40;
+    [SerializeField] private float spraySpeed = 7f;
+    [SerializeField] private float sprayMinAngle = 0f;
+    [SerializeField] private float sprayMaxAngle = 360f;
+
+    [Header("Player Ring Trap (boss) - HOLD then RELEASE")]
+    [SerializeField] private int trapCount = 32;
+    [SerializeField] private float trapRadius = 2.5f;
+    [SerializeField] private float trapHoldTime = 2.5f;
+    [SerializeField] private float trapReleaseSpeed = 6f;
+    [SerializeField] private float trapAngleOffset = 0f;
+    [SerializeField] private bool trapUseOvalBullets = true;
+
+    [Header("Trap: Boss shoots while ring holds")]
+    [SerializeField] private float trapShotInterval = 0.35f;
+    [SerializeField] private int trapAimedCount = 8;
+    [SerializeField] private float trapAimedArc = 20f;
+    [SerializeField] private float trapAimedSpeed = 9f;
+
+    [Header("Trap VFX (rotation)")]
+    [SerializeField] private bool trapRotate = true;
+    [SerializeField] private float trapRotateDegPerSec = 90f;
+    [SerializeField] private bool trapClockwise = true;
+
+    [Header("Sweeping Fan (boss)")]
+    [SerializeField] private float fanDuration = 2.0f;
+    [SerializeField] private float fanFireRate = 0.08f;
+    [SerializeField] private int fanConeCount = 12;
+    [SerializeField] private float fanArc = 70f;
+    [SerializeField] private float fanSpeed = 8f;
+    [SerializeField] private float fanStartAngle = 210f;
+    [SerializeField] private float fanEndAngle = 330f;
+
+    [Header("Double Spiral (boss)")]
+    [SerializeField] private float doubleSpiralDuration = 2.0f;
+    [SerializeField] private float doubleSpiralFireRate = 0.06f;
+    [SerializeField] private float doubleSpiralSpeed = 6.5f;
+    [SerializeField] private float doubleSpiralDegreesPerTick = 14f;
+    private float doubleSpiralAngle;
+
     private Coroutine loop;
 
     private void Awake()
@@ -78,14 +134,12 @@ public class EnemyPatternShooter : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        loop = StartCoroutine(ShootLoop());
-    }
+    private void OnEnable() => loop = StartCoroutine(ShootLoop());
 
     private void OnDisable()
     {
         if (loop != null) StopCoroutine(loop);
+        IsShooting = false;
     }
 
     private IEnumerator ShootLoop()
@@ -99,7 +153,9 @@ public class EnemyPatternShooter : MonoBehaviour
 
             Pattern chosen = allowedPatterns[Random.Range(0, allowedPatterns.Count)];
 
+            IsShooting = true;
             yield return FirePattern(chosen);
+            IsShooting = false;
         }
     }
 
@@ -126,8 +182,30 @@ public class EnemyPatternShooter : MonoBehaviour
             case Pattern.MultiRingWaves:
                 yield return FireRingWaves();
                 break;
+
+            case Pattern.CrossBurst:
+                FireCrossBurst(crossDirections, crossSpeed, crossAngleOffset);
+                break;
+
+            case Pattern.RandomSpray:
+                FireRandomSpray(sprayCount, spraySpeed, sprayMinAngle, sprayMaxAngle);
+                break;
+
+            case Pattern.PlayerRingTrap:
+                yield return FirePlayerRingTrapSequence();
+                break;
+
+            case Pattern.SweepingFan:
+                yield return FireSweepingFan();
+                break;
+
+            case Pattern.DoubleSpiral:
+                yield return FireDoubleSpiral();
+                break;
         }
     }
+
+    // -------------------- existing patterns --------------------
 
     private void FireRing360(int count, float speed, float angleOffsetDeg)
     {
@@ -170,8 +248,6 @@ public class EnemyPatternShooter : MonoBehaviour
         Vector2 aimDir = (to - from).normalized;
 
         float baseAngle = DirToAngle(aimDir);
-
-        // small arc around aim direction
         FireCone(count, arcDeg, speed, baseAngle);
     }
 
@@ -201,6 +277,135 @@ public class EnemyPatternShooter : MonoBehaviour
         }
     }
 
+    // -------------------- boss patterns --------------------
+
+    private void FireCrossBurst(int directions, float speed, float angleOffset)
+    {
+        directions = Mathf.Max(1, directions);
+        float step = 360f / directions;
+
+        for (int i = 0; i < directions; i++)
+        {
+            float a = angleOffset + step * i;
+            SpawnBullet(AngleToDir(a), speed);
+        }
+    }
+
+    private void FireRandomSpray(int count, float speed, float minAngle, float maxAngle)
+    {
+        if (count <= 0) return;
+
+        for (int i = 0; i < count; i++)
+        {
+            float a = Random.Range(minAngle, maxAngle);
+            SpawnBullet(AngleToDir(a), speed);
+        }
+    }
+
+    private class TrapBullet
+    {
+        public EnemyBulletSuperClass bullet;
+        public float angleDeg;
+        public Vector2 releaseDir;
+    }
+
+    private IEnumerator FirePlayerRingTrapSequence()
+    {
+        if (player == null) yield break;
+        if (trapCount <= 0) yield break;
+
+        Vector2 center = player.position; // locked center
+        float step = 360f / trapCount;
+
+        EnemyBulletSuperClass prefab = trapUseOvalBullets ? ovalBulletPrefab : bulletPrefab;
+
+        List<TrapBullet> ring = new List<TrapBullet>(trapCount);
+        for (int i = 0; i < trapCount; i++)
+        {
+            float a = trapAngleOffset + step * i;
+            Vector2 dir = AngleToDir(a);
+            Vector2 spawnPos = center + dir * trapRadius;
+
+            var b = Instantiate(prefab, spawnPos, Quaternion.identity);
+            b.Fire(Vector2.zero, 0f); // hold
+
+            ring.Add(new TrapBullet { bullet = b, angleDeg = a, releaseDir = dir });
+        }
+
+        float end = Time.time + trapHoldTime;
+        float nextShot = Time.time;
+
+        while (Time.time < end)
+        {
+            if (Time.time >= nextShot)
+            {
+                FireAimedBurst(trapAimedCount, trapAimedArc, trapAimedSpeed);
+                nextShot = Time.time + trapShotInterval;
+            }
+
+            if (trapRotate)
+            {
+                float sign = trapClockwise ? -1f : 1f;
+                float delta = trapRotateDegPerSec * sign * Time.deltaTime;
+
+                for (int i = 0; i < ring.Count; i++)
+                {
+                    if (ring[i].bullet == null) continue;
+
+                    ring[i].angleDeg += delta;
+                    Vector2 dir = AngleToDir(ring[i].angleDeg);
+                    ring[i].releaseDir = dir;
+                    ring[i].bullet.transform.position = center + dir * trapRadius;
+                }
+            }
+
+            yield return null;
+        }
+
+        for (int i = 0; i < ring.Count; i++)
+        {
+            if (ring[i].bullet != null)
+                ring[i].bullet.Fire(ring[i].releaseDir, trapReleaseSpeed);
+        }
+    }
+
+    private IEnumerator FireSweepingFan()
+    {
+        bool startLeft = Random.value < 0.5f;
+        float startA = startLeft ? fanStartAngle : fanEndAngle;
+        float endA = startLeft ? fanEndAngle : fanStartAngle;
+
+        float end = Time.time + fanDuration;
+
+        while (Time.time < end)
+        {
+            float t = 1f - ((end - Time.time) / fanDuration);
+            float baseAngle = Mathf.Lerp(startA, endA, t);
+
+            FireCone(fanConeCount, fanArc, fanSpeed, baseAngle);
+            yield return new WaitForSeconds(fanFireRate);
+        }
+    }
+
+    private IEnumerator FireDoubleSpiral()
+    {
+        float end = Time.time + doubleSpiralDuration;
+
+        while (Time.time < end)
+        {
+            Vector2 d1 = AngleToDir(doubleSpiralAngle);
+            Vector2 d2 = AngleToDir(doubleSpiralAngle + 180f);
+
+            SpawnBullet(d1, doubleSpiralSpeed);
+            SpawnBullet(d2, doubleSpiralSpeed);
+
+            doubleSpiralAngle += doubleSpiralDegreesPerTick;
+            yield return new WaitForSeconds(doubleSpiralFireRate);
+        }
+    }
+
+    // -------------------- spawn helpers --------------------
+
     private void SpawnBullet(Vector2 dir, float speed)
     {
         EnemyBulletSuperClass b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
@@ -213,7 +418,6 @@ public class EnemyPatternShooter : MonoBehaviour
         b.Fire(dir, speed);
     }
 
-    // 0° = right, 90° = up, 180° = left, 270° = down
     private static Vector2 AngleToDir(float degrees)
     {
         float rad = degrees * Mathf.Deg2Rad;

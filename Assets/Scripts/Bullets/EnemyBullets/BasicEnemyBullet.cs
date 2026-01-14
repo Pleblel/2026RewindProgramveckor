@@ -29,4 +29,9 @@ public class BasicEnemyBullet : MonoBehaviour
         transform.position += (Vector3)(dir * speed * Time.deltaTime);
 
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }

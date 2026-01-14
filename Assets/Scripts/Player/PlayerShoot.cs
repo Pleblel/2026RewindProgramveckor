@@ -1,5 +1,4 @@
-using Unity.Mathematics;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -16,40 +15,46 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] float unfocusedSpreadDeg;
     [SerializeField] float defaultSpreadDeg;
 
-
     Transform firePoint;
     float cooldown;
-
     float spreadDeg;
 
     PlayerMovement playerMovement;
 
     private void Start()
     {
-        firePoint = GetComponentInChildren<Transform>().Find("Fire Point");
+        // Safer: Find directly under this object
+        firePoint = transform.Find("Fire Point");
+        if (firePoint == null)
+            firePoint = GetComponentInChildren<Transform>()?.Find("Fire Point");
+
         playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
-        switch (playerMovement.speed)
+        // If playerMovement is missing, avoid null errors
+        if (playerMovement != null)
         {
-            case PlayerMovement.Speed.Focused:
-                spreadDeg = focusedSpreadDeg;
-                break;
+            switch (playerMovement.speed)
+            {
+                case PlayerMovement.Speed.Focused:
+                    spreadDeg = focusedSpreadDeg;
+                    break;
 
-            case PlayerMovement.Speed.Default:
-                spreadDeg = defaultSpreadDeg;
-                break;
-
-            case PlayerMovement.Speed.Unfocused:
-                spreadDeg = unfocusedSpreadDeg;
-                break;
+                case PlayerMovement.Speed.Default:
+                    spreadDeg = defaultSpreadDeg;
+                    break;
+            }
         }
 
+        // ✅ FIX: cast enum properly
         for (int i = 0; i < bullets.Length && i < 9; i++)
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+        {
+            KeyCode key = (KeyCode)((int)KeyCode.Alpha1 + i);
+            if (Input.GetKeyDown(key))
                 selectedBulletIndex = i;
+        }
 
         if (Input.GetKey(KeyCode.J) && Time.time >= cooldown)
         {
@@ -78,8 +83,11 @@ public class PlayerShoot : MonoBehaviour
 
         BulletType type = bullets[selectedBulletIndex];
 
+        if (firePoint == null) return;
+
         GameObject go = Instantiate(type.prefab, firePoint.position - (Vector3)offset, Quaternion.identity);
         go.transform.localScale = Vector3.one * type.scale;
+
         var pb = go.GetComponent<PlayerBulletSuperClass>();
         if (pb != null)
         {
@@ -89,14 +97,14 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
-        Vector2 baseDir = Vector2.up; 
+        Vector2 baseDir = Vector2.up;
 
         switch (pattern)
         {
             case ShootPattern.Single:
                 {
                     Vector2 dir = ApplySpread(baseDir, spreadDeg);
-                    FireOne(dir, new Vector2(0,0));
+                    FireOne(dir, Vector2.zero);
                     break;
                 }
 
@@ -108,25 +116,23 @@ public class PlayerShoot : MonoBehaviour
                     FireOne(d2, new Vector2(0.2f, 0));
                     break;
                 }
+
             case ShootPattern.Tripple:
                 {
                     Vector2 d1 = (Quaternion.Euler(0, 0, -spreadDeg / 2) * baseDir).normalized;
                     Vector2 d2 = (Quaternion.Euler(0, 0, spreadDeg / 2) * baseDir).normalized;
                     Vector2 dir = ApplySpread(baseDir, spreadDeg);
-                    FireOne(dir, new Vector2(0, 0));
+                    FireOne(dir, Vector2.zero);
                     FireOne(d1, new Vector2(-0.2f, 0));
                     FireOne(d2, new Vector2(0.2f, 0));
+                    break;
                 }
-                break;
 
             case ShootPattern.Tracking:
                 break;
         }
     }
 }
-
-
-
 
 [System.Serializable]
 public struct BulletType

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 //Darren Scott
@@ -99,35 +100,45 @@ public class PlayerBulletSuperClass : MonoBehaviour
 
 public abstract  class EnemyEntity : MonoBehaviour
 {
+    // WaveManager listens to this
+    public static event Action<EnemyEntity> OnAnyEnemyKilled;
+
     protected float enemyHP;
     protected float currentHP;
     protected float movementSpeed;
     protected float stopDistance;
     protected Vector2 target;
     protected Score score;
+
     private void Awake()
     {
         score = GameObject.Find("GameManager").GetComponent<Score>();
     }
+
     protected virtual void Movement(float speed)
     {
-        Vector2 pos = transform.position; 
+        Vector2 pos = transform.position;
 
-        if(Vector2.Distance(pos, target) <= stopDistance)
+        if (Vector2.Distance(pos, target) <= stopDistance)
         {
             transform.position = target;
-            return; 
+            return;
         }
+
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
     public void TakeDamage(float damage)
     {
-        currentHP -= damage; 
+        currentHP -= damage;
 
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             score.AddScore(1000);
+
+            // Tell the wave system BEFORE we destroy
+            OnAnyEnemyKilled?.Invoke(this);
+
             Death();
         }
     }

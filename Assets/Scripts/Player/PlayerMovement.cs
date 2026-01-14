@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
-using static PlayerMovement;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("speed")]
     public float normalSpeed = 6f;
     private float currentSpeed;
+
     public enum Speed
     {
         Default,
-        Unfocused,
         Focused
     }
+
     public Speed speed { get; private set; } = Speed.Default;
 
     [Header("Playfield margins")]
@@ -39,28 +35,20 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        bool unfocused = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        bool focused = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        bool focused = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightControl);
 
         if (focused) speed = Speed.Focused;
-        else if (unfocused) speed = Speed.Unfocused;
         else speed = Speed.Default;
-
 
         switch (speed)
         {
             case Speed.Default:
                 currentSpeed = normalSpeed;
                 break;
-            case Speed.Unfocused:
-                currentSpeed = normalSpeed * 1.5f;
-                break;
-
             case Speed.Focused:
-                currentSpeed = normalSpeed / 2;
+                currentSpeed = normalSpeed / 2f;
                 break;
         }
-
     }
 
     void FixedUpdate()

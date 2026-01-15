@@ -228,6 +228,8 @@ GameObject:
   - component: {fileID: 307763209}
   - component: {fileID: 307763208}
   - component: {fileID: 307763207}
+  - component: {fileID: 307763213}
+  - component: {fileID: 307763212}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -275,10 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalSpeed: 4
-  leftMarginV: 0.25
-  rightMarginV: 0.25
-  bottomMarginV: 0.01
-  topMarginV: 0.01
+  focusedDiv: 2
 --- !u!114 &307763209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,17 +290,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fcab3d0b57e7024bb44036154e4ec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pattern: 2
   bullets:
   - name: Ted
     scale: 0.15
     speed: 10
     prefab: {fileID: 450861771}
   selectedBulletIndex: 0
-  fireRate: 10
-  focusedSpreadDeg: 0
-  unfocusedSpreadDeg: 20
+  baseFireRate: 5
+  baseDamagePerBullet: 10
   defaultSpreadDeg: 10
+  baseTripleOffsetX: 0.2
 --- !u!212 &307763210
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -370,6 +368,51 @@ Transform:
   - {fileID: 1930452304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307763212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307763206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d169ab7421afcf24f94af3a46b57f594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reviveInvulnTime: 1.5
+--- !u!114 &307763213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307763206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd0c952a23a5b14f8d9520f8265fd5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMult: 1
+  fireRateMult: 1
+  bulletSpeedMult: 1
+  defaultDamageMult: 1
+  defaultFireRateMult: 1
+  defaultSpreadMult: 1
+  focusedDamageMult: 1
+  focusedFireRateMult: 1
+  tripleSpacingMult: 1
+  focusedMoveMult: 1
+  pierceBonus: 0
+  waveBarrierEnabled: 0
+  barrierPerWave: 0
+  barrierHits: 0
+  revives: 2
+  killBloomEnabled: 0
+  bossAndStationaryDamageMult: 1
+  trashDamageMult: 1
+  slowEnemyBulletsWhileFocused: 0
+  focusedEnemyBulletSpeedMult: 0.9
 --- !u!1 &325534433
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42573e2f782b6fd45b22f453a8fad290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnDegPerSec: 30
 --- !u!4 &450861775
 Transform:
   m_ObjectHideFlags: 0
@@ -1761,14 +1805,14 @@ MonoBehaviour:
   spawner: {fileID: 2049638968}
   waves:
   - name: 1
-    killsToClear: 2
+    killsToClear: 17
     sideEnabled: 1
     sideBurstInterval: {x: 4, y: 8}
     sideBurstAmount: {x: 4, y: 12}
     sideBurstGap: 3
     sideYOffsetMin: -1
     sideYOffsetMax: 2
-    sideMaxAlive: 2
+    sideMaxAlive: 13
     chaseEnabled: 0
     chaseBurstInterval: {x: 0, y: 0}
     chaseBurstAmount: {x: 0, y: 0}
@@ -1779,19 +1823,19 @@ MonoBehaviour:
     stationaryMaxAlive: 0
     spawnStationaryAtKill: 0
   - name: 2
-    killsToClear: 5
+    killsToClear: 30
     sideEnabled: 1
     sideBurstInterval: {x: 4, y: 8}
     sideBurstAmount: {x: 4, y: 12}
     sideBurstGap: 3
     sideYOffsetMin: -1
     sideYOffsetMax: 2
-    sideMaxAlive: 2
+    sideMaxAlive: 12
     chaseEnabled: 1
     chaseBurstInterval: {x: 2, y: 4}
     chaseBurstAmount: {x: 2, y: 6}
     chaseBurstGap: 1
-    chaseMaxAlive: 3
+    chaseMaxAlive: 10
     stationaryEnabled: 0
     stationaryAmount: 0
     stationaryMaxAlive: 0
@@ -1872,7 +1916,7 @@ MonoBehaviour:
   finalBossPrefab: {fileID: 0}
   bossSpawnPoint: {fileID: 0}
   intermissionSeconds: 2
-  waitForCleanupBeforeNextWave: 1
+  waitForCleanupBeforeBoss: 1
 --- !u!114 &2049638972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1961,6 +2005,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   bossExtraBulletSpeed: 0.05
   bossExtraFireRate: 0.05
+  rankBulletSpeedBonus: 0
+  rankFireRateBonus: 0
+  rankSpawnBonus: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

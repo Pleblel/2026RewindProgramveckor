@@ -85,39 +85,59 @@ public class EnemyBulletSuperClass : MonoBehaviour
 
 public class PlayerBulletSuperClass : MonoBehaviour
 {
-    protected float bulletSpeed;
-    protected int damage;
-    protected Vector2 moveDir = Vector2.up;
+    protected Vector2 moveDir;
+    protected float speed;
+    protected int baseDamage;
 
-    public void Init(Vector2 dir, float speed, int d)
+    protected int pierceRemaining;
+    protected PlayerShoot ownerShoot;
+
+    public void Init(Vector2 dir, float bulletSpeed, int damage, int pierce, PlayerShoot owner)
     {
         moveDir = dir.normalized;
-        bulletSpeed = speed;
+        speed = bulletSpeed;
+        baseDamage = damage;
+        pierceRemaining = pierce;
+        ownerShoot = owner;
         transform.up = moveDir;
-        damage = d;
     }
 
     protected virtual void Update()
     {
-        BulletTravel(bulletSpeed);
+        Move();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-            Destroy(gameObject);
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
-
-    protected virtual void BulletTravel(float speed)
+    protected virtual void Move()
     {
         transform.position += (Vector3)(moveDir * speed * Time.deltaTime);
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Enemy")) return;
+
+        var enemy = collision.GetComponent<EnemyEntity>();
+        if (enemy != null)
+        {
+            int dmg = ownerShoot != null ? ownerShoot.GetEffectiveDamage(enemy) : baseDamage;
+            enemy.TakeDamage(dmg);
+        }
+
+        if (pierceRemaining > 0)
+        {
+            pierceRemaining--;
+            return;
+        }
+
+        Destroy(gameObject);
+    }
+
+    protected virtual void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
+
 
 // ---------------- Enemy Base ----------------
 

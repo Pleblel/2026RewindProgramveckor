@@ -1,27 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Bullet : PlayerBulletSuperClass
 {
-    private void Update()
+    [SerializeField] private float turnDegPerSec = 30f;
+
+    protected override void Update()
     {
-        BulletTravel(bulletSpeed);
+        // keep base movement + collision logic (collision is still in base)
+        base.Update();
     }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            var enemy = collision.GetComponent<EnemyEntity>();
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-
-        
-           
-    }
-
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +35,7 @@ public class WaveManager : MonoBehaviour
 
     [Header("Refs")]
     [SerializeField] private EnemySpawner spawner;
+    [SerializeField] private CardRewardManager cardRewards;
 
     [Header("Waves (must be 6)")]
     [SerializeField] private List<WaveDef> waves = new List<WaveDef>(6);
@@ -55,6 +56,7 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         if (spawner == null) spawner = FindFirstObjectByType<EnemySpawner>();
+        if (cardRewards == null) cardRewards = FindFirstObjectByType<CardRewardManager>();
     }
 
     private void OnEnable()
@@ -116,6 +118,19 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator RunWave(WaveDef w)
     {
+        // ✅ CARD PICK AT START OF WAVE
+        if (cardRewards != null)
+        {
+            // This opens UI + sets Time.timeScale = 0 inside CardRewardManager
+            cardRewards.OpenCardChoice();
+
+            // Wait until player picks a card (PickCard sets timeScale back to 1)
+            yield return new WaitUntil(() => Time.timeScale > 0f);
+
+            // Refresh barrier etc at the start of the wave AFTER picking
+            cardRewards.OnWaveStart();
+        }
+
         killsThisWave = 0;
         countingKills = true;
         bossActive = false;

@@ -1,11 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CardButtonUI : MonoBehaviour
 {
     [SerializeField] private Button button;
-    [SerializeField] private Text titleText;
-    [SerializeField] private Text descText;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI descText;
 
     private UpgradeId id;
     private CardRewardManager mgr;

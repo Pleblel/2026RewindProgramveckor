@@ -24,7 +24,7 @@ public class ChaseMovement : EnemyEntity
     {
         FindPlayer();
         distanceStop = Random.Range(2, 6);
-        enemyHP = 10f;
+        enemyHP = 40f;
         currentHP = enemyHP;
         movementSpeed = 5f;
         stopDistance = distanceStop;
@@ -38,7 +38,7 @@ public class ChaseMovement : EnemyEntity
     void Update()
     {
         Movement(movementSpeed);
-        FacePoint(target);
+        FacePoint(playerTarget.transform.position);
 
         if (reachedPosition)
         {
@@ -53,6 +53,7 @@ public class ChaseMovement : EnemyEntity
             if (stayTimer <= 0f)
             {
                 RunAway(movementSpeed);
+                FacePoint(target);
             }
                 
         }

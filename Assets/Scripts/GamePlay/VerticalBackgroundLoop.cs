@@ -1,71 +1,56 @@
 using UnityEngine;
 
-public class VerticalLoopAutoClone : MonoBehaviour
+public class VerticalBackgroundLoopManager : MonoBehaviour
 {
+    [Header("Background pieces (two copies of same sprite)")]
+    [SerializeField] private Transform bgA;
+    [SerializeField] private Transform bgB;
+
     [Header("Scroll")]
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 2f; // units/sec downward
 
     [Header("Wrap")]
+    [Tooltip("When a piece goes below this world Y, it wraps above the other.")]
     [SerializeField] private float wrapBelowY = -12f;
 
-    private Transform a;
-    private Transform b;
     private float height;
-
-    // marker so we don't clone twice
-    private bool initialized = false;
 
     private void Awake()
     {
-        // Prevent double-init (can happen if script gets duplicated / enabled again)
-        if (initialized) return;
-        initialized = true;
-
-        var sr = GetComponent<SpriteRenderer>();
-        if (sr == null)
+        if (bgA == null || bgB == null)
         {
-            Debug.LogError("VerticalLoopAutoClone needs a SpriteRenderer on the same GameObject.");
+            Debug.LogError("Assign bgA and bgB in the inspector.");
             enabled = false;
             return;
         }
 
-        height = sr.bounds.size.y;
-        a = transform;
-
-        // If we already have a child named "BG_Clone", don't make another
-        Transform existing = transform.parent != null ? transform.parent.Find(gameObject.name + "_Clone") : null;
-        if (existing != null)
+        var srA = bgA.GetComponent<SpriteRenderer>();
+        if (srA == null)
         {
-            b = existing;
+            Debug.LogError("bgA must have a SpriteRenderer.");
+            enabled = false;
             return;
         }
 
-        // Clone once
-        GameObject clone = Instantiate(gameObject, transform.parent);
-        clone.name = gameObject.name + "_Clone";
-        b = clone.transform;
+        // Auto-calc sprite height in world units
+        height = srA.bounds.size.y;
 
-        // Remove THIS script from the clone so it never clones again
-        var cloneScript = clone.GetComponent<VerticalLoopAutoClone>();
-        if (cloneScript != null) Destroy(cloneScript);
-
-        // Put clone above original
-        b.position = new Vector3(a.position.x, a.position.y + height, a.position.z);
+        // Force bgB to be exactly above bgA so there is no seam
+        bgB.position = new Vector3(bgB.position.x, bgA.position.y + height, bgB.position.z);
     }
 
     private void Update()
     {
-        if (b == null) return;
-
         float dy = speed * Time.deltaTime;
 
-        a.position += Vector3.down * dy;
-        b.position += Vector3.down * dy;
+        bgA.position += Vector3.down * dy;
+        bgB.position += Vector3.down * dy;
 
-        if (a.position.y <= wrapBelowY)
-            a.position = new Vector3(a.position.x, b.position.y + height, a.position.z);
+        // Wrap whichever piece went below the wrap line
+        if (bgA.position.y <= wrapBelowY)
+            bgA.position = new Vector3(bgA.position.x, bgB.position.y + height, bgA.position.z);
 
-        if (b.position.y <= wrapBelowY)
-            b.position = new Vector3(b.position.x, a.position.y + height, b.position.z);
+        if (bgB.position.y <= wrapBelowY)
+            bgB.position = new Vector3(bgB.position.x, bgA.position.y + height, bgB.position.z);
     }
 }

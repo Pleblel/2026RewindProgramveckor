@@ -4,26 +4,24 @@ public class DifficultyManager : MonoBehaviour
 {
     public static DifficultyManager I { get; private set; }
 
-    [Header("Current Phase")]
+    [Header("Phase (set by WaveManager)")]
     [Range(1, 6)] public int waveIndex = 1;
     public bool isBossPhase = false;
 
-    [Header("Scaling Curves (X = wave number 1..6, Y = multiplier)")]
+    [Header("Multipliers (X = wave 1..6, Y = multiplier)")]
     [SerializeField] private AnimationCurve enemyBulletSpeed = AnimationCurve.Linear(1, 1.00f, 6, 1.25f);
     [SerializeField] private AnimationCurve enemyMoveSpeed = AnimationCurve.Linear(1, 1.00f, 6, 1.20f);
-
-    // Higher = enemies shoot more often / patterns tick faster
     [SerializeField] private AnimationCurve enemyFireRate = AnimationCurve.Linear(1, 1.00f, 6, 1.25f);
 
-    [Header("Boss Bonus (optional)")]
-    [SerializeField] private float bossExtraBulletSpeed = 0.05f; // +5% during bosses
-    [SerializeField] private float bossExtraFireRate = 0.05f; // +5% during bosses
+    [Header("Boss Extras (optional)")]
+    [SerializeField] private float bossExtraBulletSpeed = 0.05f;
+    [SerializeField] private float bossExtraFireRate = 0.05f;
 
     private void Awake()
     {
         if (I != null && I != this) { Destroy(gameObject); return; }
         I = this;
-        // DontDestroyOnLoad(gameObject); // enable if you change scenes
+        // DontDestroyOnLoad(gameObject);
     }
 
     public void SetPhase(int wave, bool boss)
@@ -42,13 +40,7 @@ public class DifficultyManager : MonoBehaviour
         }
     }
 
-    public float MoveSpeedMult
-    {
-        get
-        {
-            return enemyMoveSpeed.Evaluate(waveIndex);
-        }
-    }
+    public float MoveSpeedMult => enemyMoveSpeed.Evaluate(waveIndex);
 
     public float FireRateMult
     {
@@ -60,7 +52,6 @@ public class DifficultyManager : MonoBehaviour
         }
     }
 
-    // Convert "fire rate multiplier" into "wait time multiplier"
-    // Example: FireRateMult=1.25 => waits become 1/1.25 = 0.8 (faster attacks)
+    // Multiply wait-times by this to make enemies fire faster with higher FireRateMult
     public float IntervalMult => 1f / Mathf.Max(0.01f, FireRateMult);
 }

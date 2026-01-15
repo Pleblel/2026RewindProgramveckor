@@ -1,16 +1,18 @@
-using System;
 using UnityEngine;
+using System;
 
-//Darren Scott
+// ---------------- Enemy Bullets ----------------
 
 public class EnemyBulletSuperClass : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 8f;
 
     private Vector2 moveDir = Vector2.down;
-    protected float bulletSpeed = 8f;
+    [SerializeField] protected float bulletSpeed = 8f;
 
     private Rigidbody2D rb;
+    private bool hasFired = false;
+    private bool scaledDefault = false;
 
     private void Awake()
     {
@@ -19,27 +21,45 @@ public class EnemyBulletSuperClass : MonoBehaviour
 
     private void OnEnable()
     {
-        // Optional: auto-despawn so bullets don't live forever
         CancelInvoke();
         if (lifeTime > 0f)
             Invoke(nameof(Despawn), lifeTime);
+
+        // If this bullet was spawned without calling Fire(), we still want it to move.
+        if (!hasFired)
+        {
+            // scale default bulletSpeed once
+            if (!scaledDefault && DifficultyManager.I != null)
+            {
+                bulletSpeed *= DifficultyManager.I.BulletSpeedMult;
+                scaledDefault = true;
+            }
+
+            ApplyVelocity();
+        }
     }
 
-    // This matches the pattern shooter usage: bullet.Fire(dir, speed)
     public virtual void Fire(Vector2 dir, float speed)
     {
-        moveDir = dir.normalized;
-        bulletSpeed = speed;
+        hasFired = true;
 
+        moveDir = dir.normalized;
+
+        float mult = (DifficultyManager.I != null) ? DifficultyManager.I.BulletSpeedMult : 1f;
+        bulletSpeed = speed * mult;
+
+        ApplyVelocity();
+    }
+
+    private void ApplyVelocity()
+    {
         if (rb != null)
-        {
             rb.velocity = moveDir * bulletSpeed;
-        }
     }
 
     protected virtual void Update()
     {
-        // If no Rigidbody2D, move by transform as a fallback
+        // fallback if no rigidbody
         if (rb == null)
             transform.position += (Vector3)(moveDir * bulletSpeed * Time.deltaTime);
     }
@@ -47,9 +67,7 @@ public class EnemyBulletSuperClass : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Despawn()
@@ -63,11 +81,14 @@ public class EnemyBulletSuperClass : MonoBehaviour
     }
 }
 
+// ---------------- Player Bullets ----------------
+
 public class PlayerBulletSuperClass : MonoBehaviour
 {
     protected float bulletSpeed;
     protected int damage;
     protected Vector2 moveDir = Vector2.up;
+
     public void Init(Vector2 dir, float speed, int d)
     {
         moveDir = dir.normalized;
@@ -75,11 +96,11 @@ public class PlayerBulletSuperClass : MonoBehaviour
         transform.up = moveDir;
         damage = d;
     }
+
     protected virtual void Update()
     {
         BulletTravel(bulletSpeed);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -91,16 +112,17 @@ public class PlayerBulletSuperClass : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     protected virtual void BulletTravel(float speed)
     {
         transform.position += (Vector3)(moveDir * speed * Time.deltaTime);
     }
 }
 
+// ---------------- Enemy Base ----------------
 
-public abstract  class EnemyEntity : MonoBehaviour
+public abstract class EnemyEntity : MonoBehaviour
 {
-    // WaveManager listens to this
     public static event Action<EnemyEntity> OnAnyEnemyKilled;
 
     protected float enemyHP;
@@ -135,10 +157,7 @@ public abstract  class EnemyEntity : MonoBehaviour
         if (currentHP <= 0)
         {
             score.AddScore(1000);
-
-            // Tell the wave system BEFORE we destroy
             OnAnyEnemyKilled?.Invoke(this);
-
             Death();
         }
     }
@@ -148,5 +167,3 @@ public abstract  class EnemyEntity : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
-

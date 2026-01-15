@@ -27,7 +27,10 @@ public class ChaseMovement : EnemyEntity
         currentHP = enemyHP;
         movementSpeed = 5f;
         stopDistance = distanceStop;
-        target = playerTarget.transform.position; 
+        target = playerTarget.transform.position;
+
+        if (DifficultyManager.I != null)
+            movementSpeed *= DifficultyManager.I.MoveSpeedMult;
     }
 
     // Update is called once per frame

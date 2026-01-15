@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> chaseEnemySpawns = new List<Transform>();
     [SerializeField] private List<Transform> sideEnemySpawns = new List<Transform>();
 
-    [Header("Tracking (auto)")]
+    [Header("Tracking")]
     [SerializeField] private List<GameObject> stationaryEnemies = new List<GameObject>();
     [SerializeField] private List<GameObject> chaseEnemies = new List<GameObject>();
     [SerializeField] private List<GameObject> sideEnemies = new List<GameObject>();
@@ -31,8 +31,6 @@ public class EnemySpawner : MonoBehaviour
     public int AliveChaseCount { get { CleanupNulls(); return chaseEnemies.Count; } }
     public int AliveSideCount { get { CleanupNulls(); return sideEnemies.Count; } }
 
-    // ---------------- Stationary ----------------
-
     public void SpawnStationary(int amount)
     {
         if (stationaryEnemy == null || stationarySpawnPoint == null) return;
@@ -40,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
 
         amount = Mathf.Clamp(amount, 1, stationarySeatTargets.Count);
 
-        // pick unique seats
         List<int> indices = new List<int>();
         for (int i = 0; i < stationarySeatTargets.Count; i++) indices.Add(i);
 
@@ -56,12 +53,9 @@ public class EnemySpawner : MonoBehaviour
             stationaryEnemies.Add(enemyGO);
 
             var enemy = enemyGO.GetComponent<StationaryShootingEnemy>();
-            if (enemy != null)
-                enemy.FindTargetPosition(seat);
+            if (enemy != null) enemy.FindTargetPosition(seat);
         }
     }
-
-    // ---------------- Chase (burst) ----------------
 
     public IEnumerator SpawnChaseBurst(int amount, float gapSeconds)
     {
@@ -81,8 +75,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // ---------------- Side (burst) ----------------
-
     public IEnumerator SpawnSideBurst(int amount, float gapSeconds, float yOffsetMin, float yOffsetMax)
     {
         if (sideEnemy == null || sideEnemySpawns == null || sideEnemySpawns.Count == 0) yield break;
@@ -94,8 +86,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Transform sp = sideEnemySpawns[Random.Range(0, sideEnemySpawns.Count)];
             float yOff = Random.Range(yOffsetMin, yOffsetMax);
-
             Vector3 pos = sp.position + new Vector3(0f, yOff, 0f);
+
             GameObject enemyGO = Instantiate(sideEnemy, pos, sp.rotation);
             sideEnemies.Add(enemyGO);
 

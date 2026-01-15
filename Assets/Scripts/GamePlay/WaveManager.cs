@@ -10,7 +10,7 @@ public class WaveManager : MonoBehaviour
         public string name = "Wave";
         public int killsToClear = 20;
 
-        [Header("Side enemies")]
+        [Header("Side")]
         public bool sideEnabled = true;
         public Vector2 sideBurstInterval = new Vector2(2.2f, 4.0f);
         public Vector2Int sideBurstAmount = new Vector2Int(3, 8);
@@ -19,34 +19,34 @@ public class WaveManager : MonoBehaviour
         public float sideYOffsetMax = 2f;
         public int sideMaxAlive = 12;
 
-        [Header("Chase enemies")]
+        [Header("Chase")]
         public bool chaseEnabled = true;
         public Vector2 chaseBurstInterval = new Vector2(2.0f, 3.5f);
         public Vector2Int chaseBurstAmount = new Vector2Int(2, 6);
         public float chaseBurstGap = 0.5f;
         public int chaseMaxAlive = 10;
 
-        [Header("Stationary enemies (spawn once at a kill threshold)")]
+        [Header("Stationary (spawn once at kill threshold)")]
         public bool stationaryEnabled = false;
         public int stationaryAmount = 2;
         public int stationaryMaxAlive = 2;
-        public int spawnStationaryAtKill = -1; // e.g. 10. set -1 to disable
+        public int spawnStationaryAtKill = -1;
     }
 
     [Header("Refs")]
     [SerializeField] private EnemySpawner spawner;
 
-    [Header("6 waves total (midboss after Wave 3)")]
+    [Header("Waves (must be 6)")]
     [SerializeField] private List<WaveDef> waves = new List<WaveDef>(6);
 
     [Header("Bosses")]
-    [SerializeField] private Primadon midBossPrefab;   // easy version
-    [SerializeField] private Primadon finalBossPrefab; // hard version
+    [SerializeField] private Primadon midBossPrefab;
+    [SerializeField] private Primadon finalBossPrefab;
     [SerializeField] private Transform bossSpawnPoint;
 
     [Header("Between phases")]
     [SerializeField] private float intermissionSeconds = 2.0f;
-    [SerializeField] private bool waitForCleanupBeforeNextWave = true;
+    [SerializeField] private bool waitForCleanupBeforeBoss = true;
 
     private int killsThisWave = 0;
     private bool countingKills = false;
@@ -71,10 +71,7 @@ public class WaveManager : MonoBehaviour
     {
         if (!countingKills) return;
         if (bossActive) return;
-
-        // don't count boss deaths toward wave clears
         if (e is Primadon) return;
-
         killsThisWave++;
     }
 
@@ -85,32 +82,36 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator RunLevel()
     {
-        // Safety
-        if (spawner == null || waves == null || waves.Count == 0)
-            yield break;
+        if (DifficultyManager.I == null)
+            Debug.LogWarning("No DifficultyManager found. Scaling won't apply.");
 
-        // ---- Waves 1-3 ----
-        for (int i = 0; i < waves.Count && i < 3; i++)
+        // Waves 1-3
+        for (int i = 0; i < 3; i++)
         {
+            DifficultyManager.I?.SetPhase(i + 1, false);
             yield return RunWave(waves[i]);
             yield return new WaitForSeconds(intermissionSeconds);
         }
 
-        // ---- Midboss (easy) ----
+        // Midboss after wave 3
+        DifficultyManager.I?.SetPhase(3, true);
         yield return RunBoss(midBossPrefab);
+
         yield return new WaitForSeconds(intermissionSeconds);
 
-        // ---- Waves 4-6 ----
-        for (int i = 3; i < waves.Count && i < 6; i++)
+        // Waves 4-6
+        for (int i = 3; i < 6; i++)
         {
+            DifficultyManager.I?.SetPhase(i + 1, false);
             yield return RunWave(waves[i]);
             yield return new WaitForSeconds(intermissionSeconds);
         }
 
-        // ---- Final boss (hard) ----
+        // Final boss after wave 6
+        DifficultyManager.I?.SetPhase(6, true);
         yield return RunBoss(finalBossPrefab);
 
-        // TODO: win screen / score result
+        // TODO: win screen
     }
 
     private IEnumerator RunWave(WaveDef w)
@@ -126,11 +127,9 @@ public class WaveManager : MonoBehaviour
 
         while (killsThisWave < w.killsToClear)
         {
-            if (spawner == null) yield break;
-
             spawner.CleanupNulls();
 
-            // Stationary trigger (spawn ONCE at a kill count)
+            // Stationary trigger (once)
             if (w.stationaryEnabled && !spawnedStationary && w.spawnStationaryAtKill >= 0 && killsThisWave >= w.spawnStationaryAtKill)
             {
                 if (spawner.AliveStationaryCount < w.stationaryMaxAlive)
@@ -161,32 +160,27 @@ public class WaveManager : MonoBehaviour
 
         countingKills = false;
 
-        if (!waitForCleanupBeforeNextWave) yield break;
-
-        // Optional cleanup: wait until the screen is clear before moving on
+        // Optional: wait for screen to clear
         while (spawner.AliveSideCount > 0 || spawner.AliveChaseCount > 0 || spawner.AliveStationaryCount > 0)
             yield return null;
     }
 
     private IEnumerator RunBoss(Primadon bossPrefab)
     {
-        if (bossPrefab == null || bossSpawnPoint == null)
-            yield break;
+        if (bossPrefab == null || bossSpawnPoint == null) yield break;
 
-        // Stop counting wave kills during boss
         countingKills = false;
         bossActive = true;
 
-        // Wait for trash to clear (feels clean)
-        if (waitForCleanupBeforeNextWave && spawner != null)
+        if (waitForCleanupBeforeBoss)
         {
+            spawner.CleanupNulls();
             while (spawner.AliveSideCount > 0 || spawner.AliveChaseCount > 0 || spawner.AliveStationaryCount > 0)
                 yield return null;
         }
 
         Primadon boss = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
 
-        // Wait for boss death (destroy)
         while (boss != null)
             yield return null;
 

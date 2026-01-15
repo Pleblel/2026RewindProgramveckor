@@ -18,6 +18,10 @@ public class SideScrollEnemy : EnemyEntity
         movementSpeed = 10f;
         stopDistance = 0;
         target = targetPoint.position;
+
+        if (DifficultyManager.I != null)
+            movementSpeed *= DifficultyManager.I.MoveSpeedMult;
+           
     }
 
     // Update is called once per frame

@@ -1,5 +1,4 @@
-﻿// EnemyPatternShooter.cs
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +19,6 @@ public class EnemyPatternShooter : MonoBehaviour
         DoubleSpiral
     }
 
-    // ✅ Primadon can read this
     public bool IsShooting { get; private set; }
 
     [Header("References")]
@@ -29,7 +27,7 @@ public class EnemyPatternShooter : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform player;
 
-    [Header("Pattern Pool (randomly pick from these)")]
+    [Header("Pattern Pool")]
     [SerializeField]
     private List<Pattern> allowedPatterns = new List<Pattern>
     {
@@ -41,15 +39,14 @@ public class EnemyPatternShooter : MonoBehaviour
     };
 
     [Header("General")]
-    public float patternCooldown = 2.0f; // ✅ you said this is public
-    [SerializeField] private bool randomizeEveryCycle = true;
+    public float patternCooldown = 2.0f;
 
     [Header("Ring 360")]
     [SerializeField] private int ringBulletCount = 36;
     [SerializeField] private float ringSpeed = 6f;
     [SerializeField] private float ringAngleOffset = 0f;
 
-    [Header("Cone Burst (shotgun arc)")]
+    [Header("Cone Burst")]
     [SerializeField] private int coneBulletCount = 10;
     [SerializeField] private float coneArcDegrees = 60f;
     [SerializeField] private float coneSpeed = 7f;
@@ -74,7 +71,7 @@ public class EnemyPatternShooter : MonoBehaviour
     [SerializeField] private int waveRingCount = 24;
     [SerializeField] private float waveSpeed = 6f;
 
-    // -------------------- Boss patterns --------------------
+    // Boss patterns
     [Header("Cross Burst (boss)")]
     [SerializeField] private int crossDirections = 8;
     [SerializeField] private float crossSpeed = 7f;
@@ -86,7 +83,7 @@ public class EnemyPatternShooter : MonoBehaviour
     [SerializeField] private float sprayMinAngle = 0f;
     [SerializeField] private float sprayMaxAngle = 360f;
 
-    [Header("Player Ring Trap (boss) - HOLD then RELEASE")]
+    [Header("Player Ring Trap (boss)")]
     [SerializeField] private int trapCount = 32;
     [SerializeField] private float trapRadius = 2.5f;
     [SerializeField] private float trapHoldTime = 2.5f;
@@ -123,6 +120,8 @@ public class EnemyPatternShooter : MonoBehaviour
 
     private Coroutine loop;
 
+    private float IntervalMult => (DifficultyManager.I != null) ? DifficultyManager.I.IntervalMult : 1f;
+
     private void Awake()
     {
         if (firePoint == null) firePoint = transform;
@@ -146,7 +145,7 @@ public class EnemyPatternShooter : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(patternCooldown);
+            yield return new WaitForSeconds(patternCooldown * IntervalMult);
 
             if (allowedPatterns == null || allowedPatterns.Count == 0)
                 continue;
@@ -205,7 +204,7 @@ public class EnemyPatternShooter : MonoBehaviour
         }
     }
 
-    // -------------------- existing patterns --------------------
+    // ---------------- existing patterns ----------------
 
     private void FireRing360(int count, float speed, float angleOffsetDeg)
     {
@@ -263,7 +262,7 @@ public class EnemyPatternShooter : MonoBehaviour
                 spiralAngle += spiralDegreesPerTick;
             }
 
-            yield return new WaitForSeconds(spiralFireRate);
+            yield return new WaitForSeconds(spiralFireRate * IntervalMult);
         }
     }
 
@@ -273,11 +272,11 @@ public class EnemyPatternShooter : MonoBehaviour
         for (int i = 0; i < waveRings; i++)
         {
             FireRing360(waveRingCount, waveSpeed, offset + i * (360f / waveRingCount) * 0.5f);
-            yield return new WaitForSeconds(waveRingDelay);
+            yield return new WaitForSeconds(waveRingDelay * IntervalMult);
         }
     }
 
-    // -------------------- boss patterns --------------------
+    // ---------------- boss patterns ----------------
 
     private void FireCrossBurst(int directions, float speed, float angleOffset)
     {
@@ -340,7 +339,7 @@ public class EnemyPatternShooter : MonoBehaviour
             if (Time.time >= nextShot)
             {
                 FireAimedBurst(trapAimedCount, trapAimedArc, trapAimedSpeed);
-                nextShot = Time.time + trapShotInterval;
+                nextShot = Time.time + (trapShotInterval * IntervalMult);
             }
 
             if (trapRotate)
@@ -383,7 +382,7 @@ public class EnemyPatternShooter : MonoBehaviour
             float baseAngle = Mathf.Lerp(startA, endA, t);
 
             FireCone(fanConeCount, fanArc, fanSpeed, baseAngle);
-            yield return new WaitForSeconds(fanFireRate);
+            yield return new WaitForSeconds(fanFireRate * IntervalMult);
         }
     }
 
@@ -400,22 +399,22 @@ public class EnemyPatternShooter : MonoBehaviour
             SpawnBullet(d2, doubleSpiralSpeed);
 
             doubleSpiralAngle += doubleSpiralDegreesPerTick;
-            yield return new WaitForSeconds(doubleSpiralFireRate);
+            yield return new WaitForSeconds(doubleSpiralFireRate * IntervalMult);
         }
     }
 
-    // -------------------- spawn helpers --------------------
+    // ---------------- spawn helpers ----------------
 
     private void SpawnBullet(Vector2 dir, float speed)
     {
         EnemyBulletSuperClass b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        b.Fire(dir, speed);
+        b.Fire(dir, speed); // scaling happens inside bullet
     }
 
     private void SpawnOvalBullet(Vector2 dir, float speed)
     {
         EnemyBulletSuperClass b = Instantiate(ovalBulletPrefab, firePoint.position, Quaternion.identity);
-        b.Fire(dir, speed);
+        b.Fire(dir, speed); // scaling happens inside bullet
     }
 
     private static Vector2 AngleToDir(float degrees)

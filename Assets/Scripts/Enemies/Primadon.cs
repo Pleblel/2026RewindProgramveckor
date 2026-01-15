@@ -1,12 +1,15 @@
-﻿// Primadon.cs
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Primadon : EnemyEntity
 {
-    public List<Transform> targetPoints = new List<Transform>();
+    [Header("Boss Stats (set per prefab)")]
+    [SerializeField] private float maxHP = 20000f;
 
+    [Header("Movement (set per prefab)")]
+    [SerializeField] private bool allowMovement = true;
+    public List<Transform> targetPoints = new List<Transform>();
     [Range(0f, 1f)] public float moveChancePerCooldown = 0.5f;
     public float arriveThreshold = 0.25f;
 
@@ -15,14 +18,17 @@ public class Primadon : EnemyEntity
 
     void Start()
     {
-        enemyHP = 20000f;
+        enemyHP = maxHP;
         currentHP = enemyHP;
+
         movementSpeed = 10f;
         stopDistance = 0f;
 
+        if (DifficultyManager.I != null)
+            movementSpeed *= DifficultyManager.I.MoveSpeedMult;
+
         ePS = GetComponent<EnemyPatternShooter>();
 
-        // Snap to closest point so we start "at a point"
         if (targetPoints != null && targetPoints.Count > 0)
         {
             int idx = GetClosestTargetPointIndex();
@@ -35,6 +41,7 @@ public class Primadon : EnemyEntity
 
     void Update()
     {
+        if (!allowMovement) return;
         if (!isMoving) return;
 
         Movement(movementSpeed);
@@ -58,13 +65,12 @@ public class Primadon : EnemyEntity
             float cd = (ePS != null) ? Mathf.Max(0.01f, ePS.patternCooldown) : 2f;
             yield return new WaitForSeconds(cd);
 
+            if (!allowMovement) continue;
             if (isMoving) continue;
             if (targetPoints == null || targetPoints.Count < 2) continue;
 
-            // ✅ Only roll movement when the boss is NOT shooting a pattern
             if (ePS != null && ePS.IsShooting) continue;
 
-            // Only decide when we're at our current target
             if (Vector2.Distance(transform.position, target) > arriveThreshold) continue;
 
             if (Random.value >= moveChancePerCooldown) continue;

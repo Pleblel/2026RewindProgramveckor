@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: d3094c7d7d3b779439d1c02104fa6238
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 96
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2991
+        width: 331
+        height: 733
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9483077664dca9243b5b1aacedf91aa3
+      internalID: 102893386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_1
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 2991
+        width: 332
+        height: 733
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1db5730e003c94fbed653aab83156b
+      internalID: -1603546896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_2
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 2991
+        width: 331
+        height: 733
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f651e26960129184f87ab33abb5f76fd
+      internalID: 1288797869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_3
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 2991
+        width: 332
+        height: 733
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b31b9479e36a24479ec6267e7f0b623
+      internalID: 2094706332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2002
+        width: 332
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b460265fe501ff4da8c227fd375107c
+      internalID: 491775454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_5
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 2002
+        width: 333
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c164a13fb4790b946ada6dbe98e16e2c
+      internalID: 1509168944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_6
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 2002
+        width: 332
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d182e352845010b45b8f8a3360ab750e
+      internalID: 1465514798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_7
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 2002
+        width: 333
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b113e28144267ae4991b62b7c1246c1b
+      internalID: -894253550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_8
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 951
+        width: 331
+        height: 913
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d18c17d89290f64ab5615817a44ae4c
+      internalID: -1789216071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_10
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 949
+        width: 330
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486862d63ecae39408a097c2df9fda25
+      internalID: 560947730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_12
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 951
+        width: 331
+        height: 913
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539dc36ed177458478dd0e96a112cc04
+      internalID: -814995483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_14
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 949
+        width: 330
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ced89bedce6f24fb45bc2a1cc00444
+      internalID: -1157707109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_20
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 344
+        height: 933
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0da8ceb9b1ea844bcb40a4aa228fa5
+      internalID: -704994629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_21
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 0
+        width: 344
+        height: 933
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f735d7678b7fbc0429a1e02b0692308b
+      internalID: -315854375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_22
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 0
+        width: 344
+        height: 933
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1d5a4b34141fe4c9545ec43f4c61c2
+      internalID: -996697169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aegi_Mantra_Ship_23
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 344
+        height: 933
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a18bae450512ee43b41426bd7e34a94
+      internalID: 1050725419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Aegi_Mantra_Ship_0: 102893386
+      Aegi_Mantra_Ship_1: -1603546896
+      Aegi_Mantra_Ship_10: 560947730
+      Aegi_Mantra_Ship_11: 607067145
+      Aegi_Mantra_Ship_12: -814995483
+      Aegi_Mantra_Ship_13: 1448190787
+      Aegi_Mantra_Ship_14: -1157707109
+      Aegi_Mantra_Ship_15: -1686963969
+      Aegi_Mantra_Ship_16: -667229402
+      Aegi_Mantra_Ship_17: 583667980
+      Aegi_Mantra_Ship_18: 435548206
+      Aegi_Mantra_Ship_19: -663988015
+      Aegi_Mantra_Ship_2: 1288797869
+      Aegi_Mantra_Ship_20: -704994629
+      Aegi_Mantra_Ship_21: -315854375
+      Aegi_Mantra_Ship_22: -996697169
+      Aegi_Mantra_Ship_23: 1050725419
+      Aegi_Mantra_Ship_24: -718957882
+      Aegi_Mantra_Ship_25: 143506449
+      Aegi_Mantra_Ship_26: 1857798487
+      Aegi_Mantra_Ship_27: 2129968890
+      Aegi_Mantra_Ship_28: -716575644
+      Aegi_Mantra_Ship_29: -1297369685
+      Aegi_Mantra_Ship_3: 2094706332
+      Aegi_Mantra_Ship_30: 196108842
+      Aegi_Mantra_Ship_31: 292355615
+      Aegi_Mantra_Ship_4: 491775454
+      Aegi_Mantra_Ship_5: 1509168944
+      Aegi_Mantra_Ship_6: 1465514798
+      Aegi_Mantra_Ship_7: -894253550
+      Aegi_Mantra_Ship_8: -1789216071
+      Aegi_Mantra_Ship_9: -2065758852
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

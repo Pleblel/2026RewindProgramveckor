@@ -16,6 +16,7 @@ public class ChaseMovement : EnemyEntity
     [SerializeField] GameObject runawayTarget;
     [SerializeField] float stayTimer = 2f;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject sprite;
     [SerializeField] float distanceStop;
 
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class ChaseMovement : EnemyEntity
     void Update()
     {
         Movement(movementSpeed);
+        FacePoint(target);
 
         if (reachedPosition)
         {
@@ -48,8 +50,11 @@ public class ChaseMovement : EnemyEntity
                 firedBullet = true;
             }
 
-            if (stayTimer <= 0f) 
+            if (stayTimer <= 0f)
+            {
                 RunAway(movementSpeed);
+            }
+                
         }
            
     }
@@ -88,6 +93,18 @@ public class ChaseMovement : EnemyEntity
     void FindPlayer()
     {
         playerTarget = GameObject.FindGameObjectWithTag("Player"); 
+    }
+
+    void FacePoint(Vector2 point)
+    {
+        Vector2 dir = (point - (Vector2)transform.position);
+        if (dir.sqrMagnitude < 0.0001f) return;
+
+        // If your sprite faces UP by default:
+       sprite.transform.up = dir.normalized;
+
+        // If your sprite faces RIGHT by default, use this instead:
+        // transform.right = dir.normalized;
     }
 
     void FireBullet()

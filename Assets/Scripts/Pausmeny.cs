@@ -16,7 +16,34 @@ public class PauseMenu : MonoBehaviour
             else
                 Pause();
         }
+
+
+
+
+        
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame();
+            }
+        }
+
+
+
+
     }
+
+
+
+
+
+
+    public void PauseGame()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
 
     void Pause()
     {

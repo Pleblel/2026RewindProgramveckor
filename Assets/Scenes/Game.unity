@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 67299742}
   - component: {fileID: 67299744}
-  - component: {fileID: 67299743}
   m_Layer: 0
   m_Name: Stars2
   m_TagString: Untagged
@@ -156,22 +155,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2091825259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &67299743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67299741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b4f3278f06b3424088366fb688509e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgA: {fileID: 0}
-  bgB: {fileID: 0}
-  speed: 2
-  wrapBelowY: -16
 --- !u!212 &67299744
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -733,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7121fba89b604b34aa6ea1d1b2bc8184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 4
+  normalSpeed: 6
   focusedDiv: 2
   leftMarginV: 0.29
   rightMarginV: 0.29
@@ -2279,7 +2262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1250931430}
   - component: {fileID: 1250931429}
-  - component: {fileID: 1250931431}
   m_Layer: 0
   m_Name: Stars
   m_TagString: Untagged
@@ -2354,22 +2336,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2091825259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1250931431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250931428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b4f3278f06b3424088366fb688509e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgA: {fileID: 0}
-  bgB: {fileID: 0}
-  speed: 2
-  wrapBelowY: -1
 --- !u!1 &1403300820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,8 +3746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgA: {fileID: 1250931430}
   bgB: {fileID: 67299742}
-  speed: 2
-  wrapBelowY: -18
+  speed: 5
+  wrapBelowY: -17
 --- !u!1 &2061611221
 GameObject:
   m_ObjectHideFlags: 0

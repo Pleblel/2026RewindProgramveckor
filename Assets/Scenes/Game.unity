@@ -1682,6 +1682,7 @@ GameObject:
   - component: {fileID: 2049638969}
   - component: {fileID: 2049638968}
   - component: {fileID: 2049638971}
+  - component: {fileID: 2049638972}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1760,14 +1761,14 @@ MonoBehaviour:
   spawner: {fileID: 2049638968}
   waves:
   - name: 1
-    killsToClear: 18
+    killsToClear: 2
     sideEnabled: 1
     sideBurstInterval: {x: 4, y: 8}
     sideBurstAmount: {x: 4, y: 12}
     sideBurstGap: 3
     sideYOffsetMin: -1
     sideYOffsetMax: 2
-    sideMaxAlive: 18
+    sideMaxAlive: 2
     chaseEnabled: 0
     chaseBurstInterval: {x: 0, y: 0}
     chaseBurstAmount: {x: 0, y: 0}
@@ -1778,19 +1779,19 @@ MonoBehaviour:
     stationaryMaxAlive: 0
     spawnStationaryAtKill: 0
   - name: 2
-    killsToClear: 30
-    sideEnabled: 0
-    sideBurstInterval: {x: 0, y: 0}
-    sideBurstAmount: {x: 0, y: 0}
-    sideBurstGap: 0
-    sideYOffsetMin: 0
-    sideYOffsetMax: 0
-    sideMaxAlive: 0
-    chaseEnabled: 0
-    chaseBurstInterval: {x: 0, y: 0}
-    chaseBurstAmount: {x: 0, y: 0}
-    chaseBurstGap: 0
-    chaseMaxAlive: 0
+    killsToClear: 5
+    sideEnabled: 1
+    sideBurstInterval: {x: 4, y: 8}
+    sideBurstAmount: {x: 4, y: 12}
+    sideBurstGap: 3
+    sideYOffsetMin: -1
+    sideYOffsetMax: 2
+    sideMaxAlive: 2
+    chaseEnabled: 1
+    chaseBurstInterval: {x: 2, y: 4}
+    chaseBurstAmount: {x: 2, y: 6}
+    chaseBurstGap: 1
+    chaseMaxAlive: 3
     stationaryEnabled: 0
     stationaryAmount: 0
     stationaryMaxAlive: 0
@@ -1872,6 +1873,94 @@ MonoBehaviour:
   bossSpawnPoint: {fileID: 0}
   intermissionSeconds: 2
   waitForCleanupBeforeNextWave: 1
+--- !u!114 &2049638972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049638967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3925cc3c1212284fa4ded9c6bc747dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveIndex: 1
+  isBossPhase: 0
+  enemyBulletSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0.05
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 6
+      value: 1.25
+      inSlope: 0.05
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyMoveSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0.04000001
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 6
+      value: 1.2
+      inSlope: 0.04000001
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyFireRate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0.05
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 6
+      value: 1.25
+      inSlope: 0.05
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bossExtraBulletSpeed: 0.05
+  bossExtraFireRate: 0.05
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

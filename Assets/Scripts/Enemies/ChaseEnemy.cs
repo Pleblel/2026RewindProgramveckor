@@ -24,7 +24,7 @@ public class ChaseMovement : EnemyEntity
     {
         FindPlayer();
         distanceStop = Random.Range(2, 6);
-        enemyHP = 30f;
+        enemyHP = 20f;
         currentHP = enemyHP;
         movementSpeed = 5f;
         stopDistance = distanceStop;

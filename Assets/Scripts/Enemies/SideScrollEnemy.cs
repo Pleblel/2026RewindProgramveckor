@@ -13,7 +13,7 @@ public class SideScrollEnemy : EnemyEntity
     // Start is called before the first frame update
     void Start()
     {
-        enemyHP = 20f;
+        enemyHP = 10f;
         currentHP = enemyHP;
         movementSpeed = 10f;
         stopDistance = 0;

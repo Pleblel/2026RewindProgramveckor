@@ -190,7 +190,7 @@ MonoBehaviour:
   ovalBulletPrefab: {fileID: 1980569769166733230, guid: 320be4f9c0ce88047b0f2c0637897e0e, type: 3}
   firePoint: {fileID: 0}
   player: {fileID: 0}
-  allowedPatterns: 0000000002000000030000000400000002000000
+  allowedPatterns: 03000000040000000200000004000000
   patternCooldown: 0.5
   ringBulletCount: 36
   ringSpeed: 4
@@ -199,18 +199,18 @@ MonoBehaviour:
   coneArcDegrees: 60
   coneSpeed: 7.6
   coneBaseAngle: 250
-  aimedCount: 8
-  aimedArcDegrees: 25
+  aimedCount: 6
+  aimedArcDegrees: 18
   aimedSpeed: 5
-  spiralDuration: 2
-  spiralFireRate: 0.06
-  spiralBulletsPerTick: 8
+  spiralDuration: 1
+  spiralFireRate: 0.09
+  spiralBulletsPerTick: 3
   spiralSpeed: 6.5
-  spiralDegreesPerTick: 12
+  spiralDegreesPerTick: 13
   waveRings: 2
   waveRingDelay: 0.25
-  waveRingCount: 24
-  waveSpeed: 3
+  waveRingCount: 18
+  waveSpeed: 2.8
   crossDirections: 8
   crossSpeed: 7
   crossAngleOffset: 0

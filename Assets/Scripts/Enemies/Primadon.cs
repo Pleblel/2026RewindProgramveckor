@@ -13,11 +13,19 @@ public class Primadon : EnemyEntity
     [Range(0f, 1f)] public float moveChancePerCooldown = 0.5f;
     public float arriveThreshold = 0.25f;
 
+    [Header("Auto-find Target Points (optional)")]
+    [SerializeField] private bool autoFindTargetPoints = true;
+    [SerializeField] private string targetPointTag = "PrimadonPoint";
+    [SerializeField] private bool onlyAutoFindIfListEmpty = true;
+
     private EnemyPatternShooter ePS;
     private bool isMoving = false;
 
     void Start()
     {
+        // ✅ NEW: auto-fill targetPoints from tagged objects (doesn't change your core logic)
+        TryAutoFindTargetPoints();
+
         enemyHP = maxHP;
         currentHP = enemyHP;
 
@@ -105,5 +113,39 @@ public class Primadon : EnemyEntity
             }
         }
         return best;
+    }
+
+    // -------------------- NEW HELPERS (setup only) --------------------
+
+    private void TryAutoFindTargetPoints()
+    {
+        if (!autoFindTargetPoints) return;
+
+        if (onlyAutoFindIfListEmpty == false || targetPoints == null || targetPoints.Count == 0)
+        {
+            var gos = GameObject.FindGameObjectsWithTag(targetPointTag);
+            if (gos == null || gos.Length == 0)
+            {
+                Debug.LogWarning($"[Primadon] No target points found with tag '{targetPointTag}'.");
+                return;
+            }
+
+            if (targetPoints == null) targetPoints = new List<Transform>();
+            targetPoints.Clear();
+
+            for (int i = 0; i < gos.Length; i++)
+                targetPoints.Add(gos[i].transform);
+
+            // Stable order (optional): top-to-bottom, then left-to-right
+            targetPoints.Sort((a, b) =>
+            {
+                if (a == null && b == null) return 0;
+                if (a == null) return 1;
+                if (b == null) return -1;
+
+                int y = b.position.y.CompareTo(a.position.y); // higher first
+                return (y != 0) ? y : a.position.x.CompareTo(b.position.x);
+            });
+        }
     }
 }

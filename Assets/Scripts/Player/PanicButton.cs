@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class PanicBomb : MonoBehaviour
 {
-    [Header("Cost / Input")]
+    [Header("Input / Cost")]
     [SerializeField] private KeyCode key = KeyCode.K;
     [SerializeField] private int scoreCost = 1_000_000;
     [SerializeField] private float cooldownSeconds = 6f;
 
-    [Header("Effect")]
-    [SerializeField] private bool clearAllEnemyBullets = true;
+    [Header("Bullet Clear")]
+    [SerializeField] private string enemyBulletTag = "EnemyBullet";
+
+    [Header("Enemy Damage")]
+    [SerializeField] private bool damageEnemies = true;
+    [SerializeField] private float damageToAllEnemies = 50f;
+    [SerializeField] private float damageToBosses = 200f;
 
     [Header("VFX")]
     [SerializeField] private CameraShake cameraShake;
@@ -25,8 +30,8 @@ public class PanicBomb : MonoBehaviour
         if (score == null)
             score = GameObject.Find("GameManager")?.GetComponent<Score>();
 
-        if (cameraShake == null)
-            cameraShake = Camera.main != null ? Camera.main.GetComponent<CameraShake>() : null;
+        if (cameraShake == null && Camera.main != null)
+            cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
     private void Update()
@@ -45,19 +50,35 @@ public class PanicBomb : MonoBehaviour
 
     private void DoPanic()
     {
-        // Screen shake (unscaled so it works even if you pause elsewhere)
+        // VFX
         if (cameraShake != null)
             cameraShake.Shake(shakeDuration, shakeStrength);
 
-        // Clear all enemy bullets
-        if (!clearAllEnemyBullets) return;
-
-        var bullets = FindObjectsByType<EnemyBulletSuperClass>(FindObjectsSortMode.None);
-
-        for (int i = 0; i < bullets.Length; i++)
+        // 1) Clear all bullets with tag
+        if (!string.IsNullOrEmpty(enemyBulletTag))
         {
-            if (bullets[i] != null)
-                Destroy(bullets[i].gameObject);
+            GameObject[] bullets = GameObject.FindGameObjectsWithTag(enemyBulletTag);
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                if (bullets[i] != null)
+                    Destroy(bullets[i]);
+            }
+        }
+
+        // 2) Damage enemies (still by component)
+        if (damageEnemies)
+        {
+
+            var enemies = FindObjectsByType<EnemyEntity>(FindObjectsSortMode.None);
+
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                var e = enemies[i];
+                if (e == null) continue;
+
+                float dmg = (e is Primadon) ? damageToBosses : damageToAllEnemies;
+                e.TakeDamage(dmg);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Primadon : EnemyEntity
 {
@@ -21,6 +22,7 @@ public class Primadon : EnemyEntity
     private EnemyPatternShooter ePS;
     private bool isMoving = false;
 
+    [SerializeField] GameObject playerTarget;
     void Start()
     {
         // ✅ NEW: auto-fill targetPoints from tagged objects (doesn't change your core logic)
@@ -49,6 +51,10 @@ public class Primadon : EnemyEntity
 
     void Update()
     {
+        FindPlayer();
+        FacePoint(playerTarget.transform.position);
+
+
         if (!allowMovement) return;
         if (!isMoving) return;
 
@@ -116,6 +122,26 @@ public class Primadon : EnemyEntity
     }
 
     // -------------------- NEW HELPERS (setup only) --------------------
+
+
+
+    void FacePoint(Vector2 point)
+    {
+        Vector2 dir = (point - (Vector2)transform.position);
+        if (dir.sqrMagnitude < 0.0001f) return;
+
+        // If your sprite faces UP by default:
+        gameObject.transform.up = dir.normalized;
+
+        // If your sprite faces RIGHT by default, use this instead:
+        // transform.right = dir.normalized;
+    }
+
+    void FindPlayer()
+    {
+        if (playerTarget == null)
+            playerTarget = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void TryAutoFindTargetPoints()
     {

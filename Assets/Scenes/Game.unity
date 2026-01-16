@@ -4515,9 +4515,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 107
-  scoreCost: 100
-  cooldownSeconds: 6
-  clearAllEnemyBullets: 1
+  scoreCost: 10000000
+  cooldownSeconds: 30
+  enemyBulletTag: EnemyBullet
+  damageEnemies: 1
+  damageToAllEnemies: 50
+  damageToBosses: 200
   cameraShake: {fileID: 173615026}
   shakeDuration: 0.14
   shakeStrength: 0.22

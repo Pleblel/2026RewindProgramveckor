@@ -16,6 +16,9 @@ public class PlayerShoot : MonoBehaviour
     [Header("Triple spacing")]
     public float baseTripleOffsetX = 0.2f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource shootLoopSource;
+
     private Transform firePoint;
     private float cooldown;
 
@@ -24,6 +27,10 @@ public class PlayerShoot : MonoBehaviour
 
     private void Start()
     {
+
+        if (shootLoopSource == null)
+            shootLoopSource = GetComponent<AudioSource>();
+
         firePoint = transform.Find("Fire Point");
         pm = GetComponent<PlayerMovement>();
         ups = GetComponent<PlayerUpgradeState>();
@@ -44,7 +51,25 @@ public class PlayerShoot : MonoBehaviour
         }
 
         float fr = GetEffectiveFireRate();
-        if (Input.GetKey(KeyCode.J) && Time.time >= cooldown)
+
+        bool holdingShoot = Input.GetKey(KeyCode.J);
+        bool canShootNow = holdingShoot && bullets != null && bullets.Length > 0 && firePoint != null;
+
+        // Start/stop loop based on holding + ability to shoot
+        if (shootLoopSource != null)
+        {
+            if (canShootNow)
+            {
+                if (!shootLoopSource.isPlaying) shootLoopSource.Play();
+            }
+            else
+            {
+                if (shootLoopSource.isPlaying) shootLoopSource.Stop();
+            }
+        }
+
+        // Actual shooting (unchanged logic)
+        if (holdingShoot && Time.time >= cooldown)
         {
             cooldown = Time.time + (1f / Mathf.Max(0.01f, fr));
             ShootTriple();

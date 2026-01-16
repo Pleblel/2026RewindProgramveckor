@@ -92,6 +92,16 @@ public class PlayerBulletSuperClass : MonoBehaviour
     protected int pierceRemaining;
     protected PlayerShoot ownerShoot;
 
+    protected Score score;
+
+    private void Start()
+    {
+        score = GameObject.Find("GameManager").GetComponent<Score>();
+
+        if (score != null)
+            Debug.Log("Found Score");
+    }
+
     public void Init(Vector2 dir, float bulletSpeed, int damage, int pierce, PlayerShoot owner)
     {
         moveDir = dir.normalized;
@@ -115,6 +125,9 @@ public class PlayerBulletSuperClass : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Enemy")) return;
+
+        score.AddScore(1000);
+
 
         var enemy = collision.GetComponent<EnemyEntity>();
         if (enemy != null)
@@ -145,8 +158,8 @@ public abstract class EnemyEntity : MonoBehaviour
 {
     public static event Action<EnemyEntity> OnAnyEnemyKilled;
 
-    protected float enemyHP;
-    protected float currentHP;
+    public float enemyHP;
+    public float currentHP;
     protected float movementSpeed;
     protected float stopDistance;
     protected Vector2 target;

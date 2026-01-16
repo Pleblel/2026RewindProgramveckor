@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ddd0ddb9889124ea175f0613dd7554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHP: 0
+  currentHP: 0
   maxHP: 11000
   allowMovement: 1
   targetPoints: []

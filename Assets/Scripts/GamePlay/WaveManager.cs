@@ -195,6 +195,7 @@ public class WaveManager : MonoBehaviour
         }
 
         Primadon boss = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
+        FindFirstObjectByType<PrimadonHealthbarUI>()?.SetBoss(boss);
 
         while (boss != null)
             yield return null;

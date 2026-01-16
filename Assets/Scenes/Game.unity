@@ -2385,7 +2385,7 @@ Transform:
   m_GameObject: {fileID: 1236779453}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: -0.35, z: -0.08146675}
+  m_LocalPosition: {x: 6, y: 2.0300002, z: -0.08146675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3142,7 +3142,7 @@ Transform:
   m_GameObject: {fileID: 1806653446}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2, y: -0.35, z: -0.08146675}
+  m_LocalPosition: {x: -2.2, y: 2.03, z: -0.08146675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3700,14 +3700,14 @@ MonoBehaviour:
   cardRewards: {fileID: 0}
   waves:
   - name: 1
-    killsToClear: 17
+    killsToClear: 120
     sideEnabled: 1
-    sideBurstInterval: {x: 4, y: 8}
-    sideBurstAmount: {x: 4, y: 12}
-    sideBurstGap: 3
-    sideYOffsetMin: -1
-    sideYOffsetMax: 2
-    sideMaxAlive: 13
+    sideBurstInterval: {x: 0.55, y: 0.95}
+    sideBurstAmount: {x: 12, y: 20}
+    sideBurstGap: 0.14
+    sideYOffsetMin: -3
+    sideYOffsetMax: 6
+    sideMaxAlive: 38
     chaseEnabled: 0
     chaseBurstInterval: {x: 0, y: 0}
     chaseBurstAmount: {x: 0, y: 0}
@@ -3718,97 +3718,97 @@ MonoBehaviour:
     stationaryMaxAlive: 0
     spawnStationaryAtKill: 0
   - name: 2
-    killsToClear: 30
+    killsToClear: 160
     sideEnabled: 1
-    sideBurstInterval: {x: 4, y: 8}
-    sideBurstAmount: {x: 4, y: 12}
-    sideBurstGap: 3
-    sideYOffsetMin: -1
-    sideYOffsetMax: 2
-    sideMaxAlive: 12
+    sideBurstInterval: {x: 0.5, y: 0.9}
+    sideBurstAmount: {x: 14, y: 22}
+    sideBurstGap: 0.13
+    sideYOffsetMin: -3
+    sideYOffsetMax: 6
+    sideMaxAlive: 40
     chaseEnabled: 1
-    chaseBurstInterval: {x: 2, y: 4}
-    chaseBurstAmount: {x: 2, y: 6}
-    chaseBurstGap: 1
-    chaseMaxAlive: 10
+    chaseBurstInterval: {x: 1.1, y: 1.7}
+    chaseBurstAmount: {x: 5, y: 9}
+    chaseBurstGap: 0.22
+    chaseMaxAlive: 18
     stationaryEnabled: 0
     stationaryAmount: 0
     stationaryMaxAlive: 0
     spawnStationaryAtKill: 0
-  - name: 
-    killsToClear: 0
-    sideEnabled: 0
+  - name: 3
+    killsToClear: 230
+    sideEnabled: 1
+    sideBurstInterval: {x: 0.45, y: 0.85}
+    sideBurstAmount: {x: 16, y: 26}
+    sideBurstGap: 0.12
+    sideYOffsetMin: -3
+    sideYOffsetMax: 6
+    sideMaxAlive: 42
+    chaseEnabled: 1
+    chaseBurstInterval: {x: 0.95, y: 1.55}
+    chaseBurstAmount: {x: 6, y: 11}
+    chaseBurstGap: 0.2
+    chaseMaxAlive: 20
+    stationaryEnabled: 1
+    stationaryAmount: 2
+    stationaryMaxAlive: 2
+    spawnStationaryAtKill: 55
+  - name: 4
+    killsToClear: 280
+    sideEnabled: 1
+    sideBurstInterval: {x: 0.42, y: 0.8}
+    sideBurstAmount: {x: 18, y: 28}
+    sideBurstGap: 0.11
+    sideYOffsetMin: -3
+    sideYOffsetMax: 6
+    sideMaxAlive: 44
+    chaseEnabled: 1
+    chaseBurstInterval: {x: 0.9, y: 1.45}
+    chaseBurstAmount: {x: 7, y: 12}
+    chaseBurstGap: 0.18
+    chaseMaxAlive: 22
+    stationaryEnabled: 1
+    stationaryAmount: 2
+    stationaryMaxAlive: 2
+    spawnStationaryAtKill: 45
+  - name: 5
+    killsToClear: 320
+    sideEnabled: 1
     sideBurstInterval: {x: 0, y: 0}
     sideBurstAmount: {x: 0, y: 0}
     sideBurstGap: 0
-    sideYOffsetMin: 0
-    sideYOffsetMax: 0
+    sideYOffsetMin: -3
+    sideYOffsetMax: 6
     sideMaxAlive: 0
-    chaseEnabled: 0
-    chaseBurstInterval: {x: 0, y: 0}
-    chaseBurstAmount: {x: 0, y: 0}
-    chaseBurstGap: 0
-    chaseMaxAlive: 0
-    stationaryEnabled: 0
-    stationaryAmount: 0
-    stationaryMaxAlive: 0
-    spawnStationaryAtKill: 0
-  - name: 
-    killsToClear: 0
-    sideEnabled: 0
-    sideBurstInterval: {x: 0, y: 0}
-    sideBurstAmount: {x: 0, y: 0}
-    sideBurstGap: 0
-    sideYOffsetMin: 0
-    sideYOffsetMax: 0
-    sideMaxAlive: 0
-    chaseEnabled: 0
-    chaseBurstInterval: {x: 0, y: 0}
-    chaseBurstAmount: {x: 0, y: 0}
-    chaseBurstGap: 0
-    chaseMaxAlive: 0
-    stationaryEnabled: 0
-    stationaryAmount: 0
-    stationaryMaxAlive: 0
-    spawnStationaryAtKill: 0
-  - name: 
-    killsToClear: 0
-    sideEnabled: 0
-    sideBurstInterval: {x: 0, y: 0}
-    sideBurstAmount: {x: 0, y: 0}
-    sideBurstGap: 0
-    sideYOffsetMin: 0
-    sideYOffsetMax: 0
-    sideMaxAlive: 0
-    chaseEnabled: 0
-    chaseBurstInterval: {x: 0, y: 0}
-    chaseBurstAmount: {x: 0, y: 0}
-    chaseBurstGap: 0
-    chaseMaxAlive: 0
-    stationaryEnabled: 0
-    stationaryAmount: 0
-    stationaryMaxAlive: 0
-    spawnStationaryAtKill: 0
-  - name: 
-    killsToClear: 0
-    sideEnabled: 0
-    sideBurstInterval: {x: 0, y: 0}
-    sideBurstAmount: {x: 0, y: 0}
-    sideBurstGap: 0
-    sideYOffsetMin: 0
-    sideYOffsetMax: 0
-    sideMaxAlive: 0
-    chaseEnabled: 0
-    chaseBurstInterval: {x: 0, y: 0}
-    chaseBurstAmount: {x: 0, y: 0}
-    chaseBurstGap: 0
-    chaseMaxAlive: 0
-    stationaryEnabled: 0
-    stationaryAmount: 0
-    stationaryMaxAlive: 0
-    spawnStationaryAtKill: 0
-  midBossPrefab: {fileID: 0}
-  finalBossPrefab: {fileID: 0}
+    chaseEnabled: 1
+    chaseBurstInterval: {x: 0.82, y: 1.3}
+    chaseBurstAmount: {x: 8, y: 14}
+    chaseBurstGap: 0.17
+    chaseMaxAlive: 26
+    stationaryEnabled: 1
+    stationaryAmount: 2
+    stationaryMaxAlive: 2
+    spawnStationaryAtKill: 40
+  - name: 6
+    killsToClear: 380
+    sideEnabled: 1
+    sideBurstInterval: {x: 0.34, y: 0.68}
+    sideBurstAmount: {x: 22, y: 36}
+    sideBurstGap: 0.09
+    sideYOffsetMin: -3
+    sideYOffsetMax: 6
+    sideMaxAlive: 52
+    chaseEnabled: 1
+    chaseBurstInterval: {x: 0.75, y: 1.2}
+    chaseBurstAmount: {x: 10, y: 16}
+    chaseBurstGap: 0.15
+    chaseMaxAlive: 30
+    stationaryEnabled: 1
+    stationaryAmount: 2
+    stationaryMaxAlive: 2
+    spawnStationaryAtKill: 35
+  midBossPrefab: {fileID: 8052858772495017943, guid: 23cee165d68d1984f9a152c01360c82c, type: 3}
+  finalBossPrefab: {fileID: 7514481510220644548, guid: 3efaeb98dc7acfd4a835df7cc22f8340, type: 3}
   bossSpawnPoint: {fileID: 0}
   intermissionSeconds: 2
   waitForCleanupBeforeBoss: 1

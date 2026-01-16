@@ -37,7 +37,7 @@ public class Primadon : EnemyEntity
 
         ePS = GetComponent<EnemyPatternShooter>();
 
-        if (targetPoints != null && targetPoints.Count > 0)
+        if (targetPoints != null && targetPoints.Count > 0 && allowMovement)
         {
             int idx = GetClosestTargetPointIndex();
             target = targetPoints[idx].position;

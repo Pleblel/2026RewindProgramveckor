@@ -93,6 +93,7 @@ public class ChaseMovement : EnemyEntity
     }
     void FindPlayer()
     {
+        if(playerTarget != null)
         playerTarget = GameObject.FindGameObjectWithTag("Player"); 
     }
 

@@ -17,7 +17,6 @@ public class StationaryShootingEnemy : EnemyEntity
         currentHP = enemyHP; 
         movementSpeed = 25f;
         stopDistance = 0.05f;
-        target = targetGameOBJ.transform.position;
 
         if (DifficultyManager.I != null)
             movementSpeed *= DifficultyManager.I.MoveSpeedMult;

@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerSurvivability : MonoBehaviour
 {
     [SerializeField] private float reviveInvulnTime = 1.5f;
@@ -29,6 +29,8 @@ public class PlayerSurvivability : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        Debug.Log("Hit: " + collision.name + " tag=" + collision.tag);
         // Tag your enemy bullets as "EnemyBullet" if you can.
         bool lethal = collision.CompareTag("EnemyBullet") || collision.CompareTag("Enemy");
         if (!lethal) return;
@@ -54,6 +56,7 @@ public class PlayerSurvivability : MonoBehaviour
 
         // Replace with your death handler if you have one
         Destroy(gameObject);
+        SceneManager.LoadScene(1);
     }
 
     private IEnumerator InvulnFlash()

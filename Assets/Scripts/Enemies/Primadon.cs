@@ -52,6 +52,8 @@ public class Primadon : EnemyEntity
     void Update()
     {
         FindPlayer();
+
+        if(playerTarget != null)
         FacePoint(playerTarget.transform.position);
 
 

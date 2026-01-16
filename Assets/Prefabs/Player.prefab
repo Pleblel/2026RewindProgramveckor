@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 5801643702094995719}
   - component: {fileID: 6718625884809854774}
   - component: {fileID: 8805344742979429721}
+  - component: {fileID: 1814605196108107168}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -326,7 +327,7 @@ MonoBehaviour:
   waveBarrierEnabled: 0
   barrierPerWave: 0
   barrierHits: 0
-  revives: 5
+  revives: 8
   killBloomEnabled: 0
   bossAndStationaryDamageMult: 1
   trashDamageMult: 1
@@ -569,6 +570,29 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0054467097, y: 0.0050473213}
+  m_Offset: {x: -0.0021426007, y: 0.0050473213}
   serializedVersion: 2
-  m_Radius: 0.46778202
+  m_Radius: 0.37923935
+--- !u!114 &1814605196108107168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205466545803682654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d4d045bb58506498333cce4366aa20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 107
+  scoreCost: 10000000
+  cooldownSeconds: 30
+  enemyBulletTag: EnemyBullet
+  damageEnemies: 1
+  damageToAllEnemies: 30
+  damageToBosses: 200
+  cameraShake: {fileID: 0}
+  shakeDuration: 0.14
+  shakeStrength: 0.22
+  score: {fileID: 0}

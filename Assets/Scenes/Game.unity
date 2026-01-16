@@ -1252,7 +1252,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7361769, g: 0.9433962, b: 0.7244571, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4497,34 +4497,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &2147147472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5205466545803682654, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
-  m_PrefabInstance: {fileID: 3590197089128218232}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2147147483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147147472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d4d045bb58506498333cce4366aa20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: 107
-  scoreCost: 10000000
-  cooldownSeconds: 30
-  enemyBulletTag: EnemyBullet
-  damageEnemies: 1
-  damageToAllEnemies: 50
-  damageToBosses: 200
-  cameraShake: {fileID: 173615026}
-  shakeDuration: 0.14
-  shakeStrength: 0.22
-  score: {fileID: 2049638975}
 --- !u!1001 &3590197089128218232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4533,6 +4505,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1814605196108107168, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 2049638975}
+    - target: {fileID: 1814605196108107168, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 173615026}
     - target: {fileID: 3739357791910310640, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
       propertyPath: bullets.Array.data[0].prefab
       value: 
@@ -4581,21 +4561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8805344742979429721, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
-      propertyPath: m_Radius
-      value: 0.37923935
-      objectReference: {fileID: 0}
-    - target: {fileID: 8805344742979429721, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0021426007
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5205466545803682654, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2147147483}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

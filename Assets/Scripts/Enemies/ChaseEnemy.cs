@@ -38,6 +38,8 @@ public class ChaseMovement : EnemyEntity
     void Update()
     {
         Movement(movementSpeed);
+        
+        if(playerTarget != null)
         FacePoint(playerTarget.transform.position);
 
         if (reachedPosition)
@@ -93,8 +95,8 @@ public class ChaseMovement : EnemyEntity
     }
     void FindPlayer()
     {
-        if(playerTarget != null)
-        playerTarget = GameObject.FindGameObjectWithTag("Player"); 
+        if(playerTarget == null)
+        playerTarget = GameObject.FindGameObjectWithTag("Player");
     }
 
     void FacePoint(Vector2 point)

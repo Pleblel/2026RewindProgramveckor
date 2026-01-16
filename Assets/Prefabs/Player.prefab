@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7121fba89b604b34aa6ea1d1b2bc8184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 7
+  normalSpeed: 7.5
   focusedDiv: 2
   focusSource: {fileID: 6718625884809854774}
   leftMarginV: 0.2
@@ -326,7 +326,7 @@ MonoBehaviour:
   waveBarrierEnabled: 0
   barrierPerWave: 0
   barrierHits: 0
-  revives: 2
+  revives: 5
   killBloomEnabled: 0
   bossAndStationaryDamageMult: 1
   trashDamageMult: 1

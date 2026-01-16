@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,27 +5,38 @@ public class Score : MonoBehaviour
 {
     public int score;
     public float scoreMultiplier = 1.0f;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
+    private void Awake()
+    {
+        // If you forgot to assign it, try auto-find on same object
+        if (scoreText == null)
+            scoreText = GetComponent<TextMeshProUGUI>();
+    }
 
     private void Start()
     {
-        StartGame();
-    }
-    void StartGame()
-    {
-        score = 100000;
+        score = 0; // change if you want
+        RefreshUI();
     }
 
     public void AddScore(int s)
     {
-        score += (int)(s * scoreMultiplier);
-        
+        score += Mathf.RoundToInt(s * scoreMultiplier);
+        RefreshUI();
     }
 
-    private void Update()
+    public bool TrySpendScore(int amount)
     {
-        scoreText.text = "Score: " + score;
+        if (score < amount) return false;
+        score -= amount;
+        RefreshUI();
+        return true;
+    }
 
+    private void RefreshUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + score;
     }
 }

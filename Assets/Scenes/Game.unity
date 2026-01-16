@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 173615025}
   - component: {fileID: 173615024}
   - component: {fileID: 173615023}
+  - component: {fileID: 173615026}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -433,6 +434,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173615026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173615022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b2ce0b741087e40baace0060aa97ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDuration: 0.12
+  defaultStrength: 0.18
 --- !u!1 &249925610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,7 +3774,7 @@ MonoBehaviour:
     chaseBurstGap: 0.15
     chaseMaxAlive: 30
     stationaryEnabled: 1
-    stationaryAmount: 2
+    stationaryAmount: 4
     stationaryMaxAlive: 2
     spawnStationaryAtKill: 35
   midBossPrefab: {fileID: 8052858772495017943, guid: 23cee165d68d1984f9a152c01360c82c, type: 3}
@@ -4482,6 +4497,31 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2147147472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5205466545803682654, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
+  m_PrefabInstance: {fileID: 3590197089128218232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2147147483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147147472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d4d045bb58506498333cce4366aa20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 107
+  scoreCost: 100
+  cooldownSeconds: 6
+  clearAllEnemyBullets: 1
+  cameraShake: {fileID: 173615026}
+  shakeDuration: 0.14
+  shakeStrength: 0.22
+  score: {fileID: 2049638975}
 --- !u!1001 &3590197089128218232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4549,7 +4589,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5205466545803682654, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2147147483}
   m_SourcePrefab: {fileID: 100100000, guid: 501e5dd391388b046aa094fded1f42bb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

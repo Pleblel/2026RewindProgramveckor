@@ -191,7 +191,7 @@ MonoBehaviour:
   stayTimer: 0.8
   bullet: {fileID: 7852623957063948419, guid: f164ae247b3aee843b020ac5fc3d09e4, type: 3}
   sprite: {fileID: 3606539146105561913}
-  distanceStop: 9
+  distanceStop: 12
 --- !u!61 &-3211276568146361210
 BoxCollider2D:
   m_ObjectHideFlags: 0

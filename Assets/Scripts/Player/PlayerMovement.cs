@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     public float normalSpeed = 6f;
     [SerializeField] private float focusedDiv = 2f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource focusSource;
+
     public enum Speed { Default, Focused }
     public Speed speed { get; private set; } = Speed.Default;
 
@@ -36,8 +39,12 @@ public class PlayerMovement : MonoBehaviour
     {
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
+
         bool focused = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         speed = focused ? Speed.Focused : Speed.Default;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            focusSource.Play();
 
         float focusMult = ups != null ? ups.focusedMoveMult : 1f;
 

@@ -7,6 +7,7 @@ TagManager:
   - Despawn
   - Enemy
   - PrimadonPoint
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

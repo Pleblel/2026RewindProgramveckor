@@ -37,8 +37,9 @@ public class SideScrollEnemy : EnemyEntity
 
     public override void Death()
     {
+        
         Instantiate(bullet,transform.position,transform.rotation);
-        Destroy(gameObject);
+        base.Death();
     }
 
     private void OnBecameVisible()

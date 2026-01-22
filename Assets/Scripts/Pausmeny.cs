@@ -20,32 +20,12 @@ public class PauseMenu : MonoBehaviour
 
 
 
-        
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PauseGame();
-            }
-        }
-
-
-
-
     }
-
-
 
 
 
 
     public void PauseGame()
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-    }
-
-
-    void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -68,7 +48,6 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        EditorApplication.isPlaying = false;
     }
 
 

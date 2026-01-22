@@ -1,0 +1,1271 @@
+fileFormatVersion: 2
+guid: cf9e420c4f48a43499beb33ede7027cb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_0
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 6473
+        width: 459
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663806ce61520ee42821b284cf716420
+      internalID: -884094866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_1
+      rect:
+        serializedVersion: 2
+        x: 2606
+        y: 6473
+        width: 459
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50eaaade1a9c56f41b30ac6248ad3e14
+      internalID: 1325139481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_2
+      rect:
+        serializedVersion: 2
+        x: 4525
+        y: 6473
+        width: 459
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ff8f1787c5cac4298611895f40ff61
+      internalID: -1597717693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_3
+      rect:
+        serializedVersion: 2
+        x: 6444
+        y: 6473
+        width: 478
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acd50be2536ea9c46b133d1aa88d87fd
+      internalID: -448110829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_4
+      rect:
+        serializedVersion: 2
+        x: 8356
+        y: 6473
+        width: 485
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c55147bca9c02d45aaff61a1d336ec7
+      internalID: -1179847737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_5
+      rect:
+        serializedVersion: 2
+        x: 10275
+        y: 6473
+        width: 485
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b5924bc61c213488676663445b3ea6
+      internalID: -1394035024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_6
+      rect:
+        serializedVersion: 2
+        x: 12115
+        y: 6479
+        width: 655
+        height: 983
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ebcdc1b9096cf14dab7ac80842f1b10
+      internalID: 1845271948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_7
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 5398
+        width: 654
+        height: 983
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a157c55fad745943a7ae210947bf88a
+      internalID: -1147617213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_8
+      rect:
+        serializedVersion: 2
+        x: 2534
+        y: 5398
+        width: 655
+        height: 983
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154cc95b21f0e87488f05a7b27dac5d6
+      internalID: 2086272317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_9
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 5398
+        width: 661
+        height: 983
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51f4b9fa9b35854cb009be1ab0a79d7
+      internalID: 1668378494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_10
+      rect:
+        serializedVersion: 2
+        x: 6254
+        y: 5568
+        width: 871
+        height: 865
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f9b1cdee1831b4188b85d2e22a4e72
+      internalID: -936231508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_11
+      rect:
+        serializedVersion: 2
+        x: 7145
+        y: 5627
+        width: 59
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38fc5b8c9fa6b5948b8c7193844a2683
+      internalID: 1528904110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_12
+      rect:
+        serializedVersion: 2
+        x: 8166
+        y: 5568
+        width: 878
+        height: 865
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fe9989e6f886374f976d1c620617e2b
+      internalID: 1062168722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_13
+      rect:
+        serializedVersion: 2
+        x: 9064
+        y: 5627
+        width: 52
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a59b438e9e43d4d84bb9a470fc2b5c
+      internalID: -1416283537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_14
+      rect:
+        serializedVersion: 2
+        x: 10085
+        y: 5568
+        width: 871
+        height: 865
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1496e6369281dcb4eb99574e9a727245
+      internalID: -91501685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_15
+      rect:
+        serializedVersion: 2
+        x: 10976
+        y: 5627
+        width: 59
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f7b5ec49a049245bcdaada5d67e3f2
+      internalID: -1066391353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_16
+      rect:
+        serializedVersion: 2
+        x: 12004
+        y: 5568
+        width: 871
+        height: 865
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d8634a63bc425f47b6d1af47af0d9e1
+      internalID: -609758825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_17
+      rect:
+        serializedVersion: 2
+        x: 12895
+        y: 5627
+        width: 59
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f119ac2c97645c40a2a4a947798e17c
+      internalID: 113356792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_18
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 4448
+        width: 1310
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba7712ac783e3a4e983e1a900b78ac7
+      internalID: 320672736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_19
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 4448
+        width: 1310
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9109f1dfb7834b4ea6c657032e23dcd
+      internalID: 965379046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_20
+      rect:
+        serializedVersion: 2
+        x: 4165
+        y: 4448
+        width: 1310
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9165302cb5cd4804c9b606cd09c3e439
+      internalID: -1341587390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_21
+      rect:
+        serializedVersion: 2
+        x: 6084
+        y: 4448
+        width: 1310
+        height: 930
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b376e34376e5aa8459188e3a93b1b0a1
+      internalID: -1089014928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_22
+      rect:
+        serializedVersion: 2
+        x: 8009
+        y: 4507
+        width: 1146
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c3c3d7114da0a47abdd5d73bfbb571
+      internalID: -831679667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_23
+      rect:
+        serializedVersion: 2
+        x: 8330
+        y: 4317
+        width: 701
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 191b4dda221682b4a8f77250d2403ffd
+      internalID: -803975672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_24
+      rect:
+        serializedVersion: 2
+        x: 9921
+        y: 4507
+        width: 1153
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7bbce81b1d13e945b7e2ab7c3a88590
+      internalID: -1498067937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_25
+      rect:
+        serializedVersion: 2
+        x: 10249
+        y: 4317
+        width: 701
+        height: 347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7b64251ffc28c468b49dfa789b38f6
+      internalID: 1781254771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_26
+      rect:
+        serializedVersion: 2
+        x: 11840
+        y: 3570
+        width: 1087
+        height: 1094
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd58caf9a205114cb92228b0db9928b
+      internalID: -2079492266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_27
+      rect:
+        serializedVersion: 2
+        x: 11840
+        y: 4507
+        width: 1146
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e52bd194fdd0142ad10b0cd95742c7
+      internalID: 1363941297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_28
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 3570
+        width: 1087
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eefe708b253e20419bf400543c7d718
+      internalID: -1659662599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_29
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 3570
+        width: 1087
+        height: 754
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4dc02d4813b4564d9a061df3589612e
+      internalID: 1195259014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_30
+      rect:
+        serializedVersion: 2
+        x: 4178
+        y: 3570
+        width: 1081
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfbaab55b3c6b784b9db1586138557c5
+      internalID: -2064273838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_31
+      rect:
+        serializedVersion: 2
+        x: 6084
+        y: 3243
+        width: 1100
+        height: 1074
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94607176b2aa7a44298c5f391256eeca
+      internalID: 1214041893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_32
+      rect:
+        serializedVersion: 2
+        x: 7996
+        y: 3538
+        width: 1100
+        height: 773
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39b16450f53a2944978918e29bcedd3
+      internalID: 828431557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_33
+      rect:
+        serializedVersion: 2
+        x: 9915
+        y: 3243
+        width: 1100
+        height: 1068
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f7d49173472da49b32c3715c07ebf2
+      internalID: 945143755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_34
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 3243
+        width: 753
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5ee7f690533204a9882020070c01b2
+      internalID: -1020917406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_35
+      rect:
+        serializedVersion: 2
+        x: 2528
+        y: 3243
+        width: 746
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff70766d025ef074d8362388c2610e93
+      internalID: 1973246942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_36
+      rect:
+        serializedVersion: 2
+        x: 4440
+        y: 3243
+        width: 753
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5e1c6e6f25af74bb5f02cc08530580
+      internalID: 678732700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_37
+      rect:
+        serializedVersion: 2
+        x: 8278
+        y: 3243
+        width: 687
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df07970880bab3498d72b7d0a593572
+      internalID: -473730176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_38
+      rect:
+        serializedVersion: 2
+        x: 12102
+        y: 3243
+        width: 753
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d97e163114554645bf0cf2f165094c3
+      internalID: 256312565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_39
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 2489
+        width: 1087
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bcccce18f1daf646b7fdc5cc20e5109
+      internalID: -1918770582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_40
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 2489
+        width: 1087
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f81069bf0a6b5741bb94c885ccbda94
+      internalID: -416670076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_41
+      rect:
+        serializedVersion: 2
+        x: 4224
+        y: 2647
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176678dde4eaed647a50093cf92c0949
+      internalID: 741003951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_42
+      rect:
+        serializedVersion: 2
+        x: 4237
+        y: 2162
+        width: 1146
+        height: 1035
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e919396d0b1c0e14b8342a3aa6471820
+      internalID: -888424741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_43
+      rect:
+        serializedVersion: 2
+        x: 6136
+        y: 2647
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b779fb965abd74bb7a64e6dd769c04
+      internalID: -287187481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_44
+      rect:
+        serializedVersion: 2
+        x: 6156
+        y: 2162
+        width: 1139
+        height: 1035
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b5713414e048e46961656e29eef81d
+      internalID: 1175839894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_45
+      rect:
+        serializedVersion: 2
+        x: 7931
+        y: 2064
+        width: 1270
+        height: 1094
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 603966151ad380240a7b4471c3f6203b
+      internalID: 1889795995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_46
+      rect:
+        serializedVersion: 2
+        x: 9830
+        y: 2155
+        width: 1283
+        height: 1003
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2bcf5c1fe9c9424dbf636408a0cc0c5
+      internalID: 905008298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_47
+      rect:
+        serializedVersion: 2
+        x: 11493
+        y: 1074
+        width: 1919
+        height: 2090
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb373a442e2f6c044bf5ba0ab19f05fd
+      internalID: -1792939762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_48
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 2162
+        width: 753
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1257a71568432f341b43772d1a408907
+      internalID: -579863897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_49
+      rect:
+        serializedVersion: 2
+        x: 2528
+        y: 2162
+        width: 746
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 891d8d4e755712148b8a9139c116d2a7
+      internalID: 557011395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_50
+      rect:
+        serializedVersion: 2
+        x: 7911
+        y: 2391
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 622b598dc6ca5544cb07cbac3afddc52
+      internalID: -1854080947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Energy Wave Power-Up_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 11500
+        height: 2168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc60a27e03272a47936f667408e79ec
+      internalID: -417149877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Energy Wave Power-Up_0: -884094866
+      Energy Wave Power-Up_1: 1325139481
+      Energy Wave Power-Up_10: -936231508
+      Energy Wave Power-Up_11: 1528904110
+      Energy Wave Power-Up_12: 1062168722
+      Energy Wave Power-Up_13: -1416283537
+      Energy Wave Power-Up_14: -91501685
+      Energy Wave Power-Up_15: -1066391353
+      Energy Wave Power-Up_16: -609758825
+      Energy Wave Power-Up_17: 113356792
+      Energy Wave Power-Up_18: 320672736
+      Energy Wave Power-Up_19: 965379046
+      Energy Wave Power-Up_2: -1597717693
+      Energy Wave Power-Up_20: -1341587390
+      Energy Wave Power-Up_21: -1089014928
+      Energy Wave Power-Up_22: -831679667
+      Energy Wave Power-Up_23: -803975672
+      Energy Wave Power-Up_24: -1498067937
+      Energy Wave Power-Up_25: 1781254771
+      Energy Wave Power-Up_26: -2079492266
+      Energy Wave Power-Up_27: 1363941297
+      Energy Wave Power-Up_28: -1659662599
+      Energy Wave Power-Up_29: 1195259014
+      Energy Wave Power-Up_3: -448110829
+      Energy Wave Power-Up_30: -2064273838
+      Energy Wave Power-Up_31: 1214041893
+      Energy Wave Power-Up_32: 828431557
+      Energy Wave Power-Up_33: 945143755
+      Energy Wave Power-Up_34: -1020917406
+      Energy Wave Power-Up_35: 1973246942
+      Energy Wave Power-Up_36: 678732700
+      Energy Wave Power-Up_37: -473730176
+      Energy Wave Power-Up_38: 256312565
+      Energy Wave Power-Up_39: -1918770582
+      Energy Wave Power-Up_4: -1179847737
+      Energy Wave Power-Up_40: -416670076
+      Energy Wave Power-Up_41: 741003951
+      Energy Wave Power-Up_42: -888424741
+      Energy Wave Power-Up_43: -287187481
+      Energy Wave Power-Up_44: 1175839894
+      Energy Wave Power-Up_45: 1889795995
+      Energy Wave Power-Up_46: 905008298
+      Energy Wave Power-Up_47: -1792939762
+      Energy Wave Power-Up_48: -579863897
+      Energy Wave Power-Up_49: 557011395
+      Energy Wave Power-Up_5: -1394035024
+      Energy Wave Power-Up_50: -1854080947
+      Energy Wave Power-Up_51: -417149877
+      Energy Wave Power-Up_6: 1845271948
+      Energy Wave Power-Up_7: -1147617213
+      Energy Wave Power-Up_8: 2086272317
+      Energy Wave Power-Up_9: 1668378494
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

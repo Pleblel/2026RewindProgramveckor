@@ -40,6 +40,13 @@ public class CardRewardManager : MonoBehaviour
         EnemyEntity.OnAnyEnemyKilled += OnEnemyKilled;
     }
 
+
+    private void Update()
+    {
+        if (choosing)
+            Time.timeScale = 0f;
+    }
+
     private void OnDestroy()
     {
         EnemyEntity.OnAnyEnemyKilled -= OnEnemyKilled;
